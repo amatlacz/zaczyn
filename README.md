@@ -36,6 +36,21 @@ adapters/    thin per-tool wrappers (Claude today; your favorite tool tomorrow �
 docs/        concept document, field guide, brainstorm logs
 ```
 
+## Recommended tooling
+
+Everything in this repository is **plain Markdown** — `PROJECT.md`, `DECISIONS.md`, skills, templates, and docs. You *can* read it all in a plain text editor or on GitHub, but the experience is much nicer with an app that renders and edits Markdown (with live preview, wiki-style links, and folder navigation).
+
+Any of these work well:
+
+- **[Obsidian](https://obsidian.md/)** — local-first, free for personal use; great for browsing linked notes and folders as a "vault." (If you use it, note that `.gitignore` already excludes its `.obsidian/` config folder.)
+- **[VS Code](https://code.visualstudio.com/)** — free and cross-platform; built-in Markdown preview (`⇧⌘V` / `Ctrl+Shift+V`) and syntax highlighting, ideal if you're already editing code.
+- **[Typora](https://typora.io/)** — a clean, seamless WYSIWYG editor that renders Markdown in place as you type (one-time paid license).
+- **[Zettlr](https://www.zettlr.com/)** — free and open source, aimed at researchers and academic writers.
+- **[Logseq](https://logseq.com/)** — free, local-first outliner for block-based, heavily linked notes.
+- **[Mark Text](https://www.marktext.cc/)** — free and open source, minimal real-time-preview editor.
+
+Pick whichever fits your workflow — the point is simply to have *something* that displays and edits Markdown comfortably while you work with this starter kit.
+
 ## Status
 
 Early. The concept is locked (see [docs/brainstorm/session-01.md](docs/brainstorm/session-01.md)); the skills are stubs growing into their final shape. Expect the glassware to be unpolished — feedback and real-world messy project stories are the most valuable contribution right now.
