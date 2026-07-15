@@ -23,9 +23,10 @@ The failure wasn't in either workflow. It was the missing setup: no shared root,
 ## How it works
 
 1. **Clone** this repository (or copy it into your workspace).
-2. **Run the intake** — point your agent at `core/intake/SKILL.md` and say "help me set up my project."
-3. **Answer up to six plain-language questions.** No jargon; the routing table translates.
-4. **Get a scaffolded workspace** — folders, `PROJECT.md`, `DECISIONS.md`, agent context files, and recommendations — with every step explained in plain language, because the scaffolding *is* the curriculum.
+2. **Install the skills** so your agent can find them. Claude Code / Cowork only discover skills under `.claude/skills/`, so this is a required first step — see [adapters/claude/README.md](adapters/claude/README.md).
+3. **Run the intake** — point your agent at `core/intake/SKILL.md` and say "help me set up my project."
+4. **Answer up to six plain-language questions.** No jargon; the routing table translates.
+5. **Get a scaffolded workspace** — folders, `PROJECT.md`, `DECISIONS.md`, agent context files, and recommendations — with every step explained in plain language, because the scaffolding *is* the curriculum.
 
 ## Repository map
 

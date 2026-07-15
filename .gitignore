@@ -1,6 +1,10 @@
 # Obsidian vault config (created when opening the repo in Obsidian)
 .obsidian/
 
+# Local Claude Code setup — skills installed from core/ (see adapters/claude/README.md)
+.claude/skills/
+.claude/settings.local.json
+
 # OS files
 .DS_Store
 Thumbs.db
