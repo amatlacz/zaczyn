@@ -1,11 +1,15 @@
 ---
-name: Suggest a routing entry
-about: A framework, MCP server, or skill the routing table should recommend
-labels: routing
+name: Suggest a working pattern
+about: A small reusable approach that helped with a real task
+labels: enhancement
 ---
 
-**Trigger:** (which interview answers / project type?)
+**The task and available material:**
 
-**Recommendation:** (framework / MCP / skill, with link)
+**What approach helped, and why:**
 
-**The one-line why:** (recommendations without reasons don't get merged 🙂)
+**Where this approach should not apply:**
+
+**An example we can inspect (remove private data):**
+
+**Could an existing prompt, rule, template, or domain workflow handle it?**

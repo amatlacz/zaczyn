@@ -1,34 +1,48 @@
-# Claude Adapter
+# Claude adapter
 
-Expresses the Zaczyn core as native Claude artifacts:
+Use the native `zaczyn-0.5.1.zip`. Its `.claude-plugin/plugin.json` points to `./core/skills/`; the complete package keeps shared references and templates available. Do not install the individual core skill folders separately.
 
-- `core/intake/SKILL.md` and `core/scaffolder/SKILL.md` follow the Claude skill format (YAML frontmatter + Markdown body) and can be installed directly in Claude Code / Cowork.
+## Claude Code — native session path
 
-## First step: install the skills
-
-Claude Code and Cowork only discover skills under `.claude/skills/<name>/SKILL.md`; Zaczyn keeps them in `core/` for portability, so **you must install them once after cloning** or they won't appear when you type `/`.
-
-**macOS / Linux** — symlink `core/` into `.claude/skills/` (single source of truth, no copies to drift):
+Extract the complete native bundle, retaining the hidden `.claude-plugin/` folder. From your work folder launch:
 
 ```bash
-mkdir -p .claude/skills
-ln -sfn ../../core/intake     .claude/skills/zaczyn-intake
-ln -sfn ../../core/scaffolder .claude/skills/zaczyn-scaffolder
+claude --plugin-dir /absolute/path/to/zaczyn-0.5.1
 ```
 
-**Windows (or if symlinks aren't available)** — copy the skill folders instead:
+| Intent | Command |
+|---|---|
+| Setup | `/zaczyn:zaczyn-setup` |
+| Work, plan, resume, organize | `/zaczyn:zaczyn-work` |
+| Review | `/zaczyn:zaczyn-review` |
+| Grow | `/zaczyn:zaczyn-grow` |
 
-```powershell
-mkdir .claude\skills
-xcopy /E /I core\intake     .claude\skills\zaczyn-intake
-xcopy /E /I core\scaffolder .claude\skills\zaczyn-scaffolder
+The flag loads that plugin for this terminal session. It does not configure a different app window. Check the four entries before testing behavior. If missing, verify the exact folder contains `.claude-plugin/plugin.json` and `core/`, then run:
+
+```bash
+claude plugin validate /absolute/path/to/zaczyn-0.5.1
 ```
 
-Then **restart Claude Code** (skill discovery runs at startup). Typing `/` should now list `zaczyn-intake` and `zaczyn-scaffolder`, or you can just say *"help me set up my project"* to trigger the intake.
+After repairing a package, exit and relaunch with the flag. A response that finds a different source checkout is not a successful plugin test. Persistent installations require their own host verification; session loading is the bounded testing path here. See the [plugin reference](https://code.claude.com/docs/en/plugins-reference).
 
-> This install is local-only — `.claude/skills/` is git-ignored so your machine-specific setup never gets committed.
+## Optional Claude Cowork path
 
-- Context files: `agents.md` at project root (Claude Code), `PROJECT.md` referenced from the working folder (Cowork).
-- Both tools can target the **same project root** — the multi-track pattern assumes it.
+1. Open **Customize → Plugins** in Claude.
+2. Choose the upload option and select the native ZIP. Upload the whole ZIP; do not manually select its visible contents.
+3. Inspect the installed plugin and its four skills. Select your actual work folder, not a source checkout or extracted bundle.
+4. Invoke setup from the available skills and describe the project, recurring work, or personal assistant you want to customize. Choose quick, guided, or deep.
+5. Confirm the assistant can read its shared resources and save your AGENTS/PROJECT context in the chosen folder. If a resource is unavailable, stop and diagnose the selected package instead of silently using another checkout.
 
-Adapters for other tools are welcome: keep the core untouched, translate only the packaging. See CONTRIBUTING.md.
+Plugin upload is documented in [Cowork's guide](https://claude.com/docs/cowork/guide/plugins). A documented flow is not proof this version has passed it; see [verification scope](../../docs/verification.md). A normal Claude Chat conversation is not the same as Cowork; use an explicit reference/upload workflow if native plugins are unavailable there.
+
+## Workspace context
+
+For a new local setup, create AGENTS.md for working behavior and PROJECT.md for facts/scope. AGENTS tells the assistant when to read PROJECT in ordinary language. For Claude Code, create or merge a CLAUDE.md wrapper importing AGENTS with `@AGENTS.md`. Retain unrelated existing instructions; do not duplicate all project facts in the wrapper.
+
+For an existing workspace, preserve its current authority until a requested migration. A legacy `@PROJECT.md` import is not broken; moving its behavior into AGENTS should preserve each preference once and update its old location. See [migration](../../docs/migration.md). Claude's [memory documentation](https://code.claude.com/docs/en/memory) describes importing AGENTS; the `@` syntax itself is Claude-specific.
+
+In Cowork, verify actual context loading in the selected folder. If unverified, explicitly ask it to read AGENTS and PROJECT before continuing. Do not infer that a plugin-root context file configures every workspace.
+
+## Fallback
+
+If upload or native discovery fails, keep the complete extracted bundle in a folder the assistant can read, identify the actual work folder, and explicitly request setup from its full file path. Read [START](../../START.md) for this fallback. If local files are unavailable, use the [chat edition](../chatgpt/README.md) as explicit guidance with manual saving; do not call it a native Claude plugin installation.

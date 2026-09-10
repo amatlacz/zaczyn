@@ -1,0 +1,10 @@
+{
+  "name": "zaczyn",
+  "version": "0.5.1",
+  "description": "Guided setup and growth for a personalized way of working with AI, at your chosen depth.",
+  "license": "MIT",
+  "skills": "./core/skills/",
+  "author": {
+    "name": "Adam Matłacz"
+  }
+}

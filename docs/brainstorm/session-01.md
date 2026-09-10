@@ -1,5 +1,7 @@
 # Zaczyn — Concept Document
 
+**Historical concept, superseded.** This records the original design, including routes and profession packs that are no longer the framework's defaults. Use the [current README](../../README.md) and [start guide](../../START.md) for the implemented approach.
+
 > **Zaczyn** *(say: "ZAH-chin"; Polish for sourdough starter)* — a sourdough starter for AI agent projects.
 >
 > Session 01: 2026-07-12 · Adam Matłacz + Claude · Status: concept locked, ready for repo skeleton

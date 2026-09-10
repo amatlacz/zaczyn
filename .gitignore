@@ -1,10 +1,20 @@
 # Obsidian vault config (created when opening the repo in Obsidian)
 .obsidian/
 
-# Local Claude Code setup — skills installed from core/ (see adapters/claude/README.md)
+# Local Claude Code setup (see adapters/claude/README.md)
 .claude/skills/
 .claude/settings.local.json
+
+# Maintainer's private lab — brainstorms, backlog, dogfooding work items.
+# Its own git repository (private remote); never part of the public framework.
+lab/
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# Generated release bundles
+dist/
+
+# Local Python build/test cache
+__pycache__/

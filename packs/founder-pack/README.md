@@ -1,10 +1,5 @@
-# Founder Pack (stub)
+# Founder pack — deferred
 
-Audience overlay for startup founders. Packs customize Zaczyn without touching the core.
+This is a reserved idea, not an installable pack or an implemented override system. Zaczyn no longer assigns routes by profession. A founder can use the same four intents with their existing business workflow.
 
-A pack may provide:
-- **Vocabulary & examples** for the intake ("MVP", "pitch deck", "market research", "investor update")
-- **Extra routing entries** (e.g. market research → Research route with competitor-tracking conventions; pitch deck → Deck route with investor-audience defaults)
-- **Templates** (lean canvas, pitch outline, research brief)
-
-Status: stub — first real content will come from actual founder use cases. Contribute yours via the issue templates.
+Contribute a concrete local template, working pattern, or example first. See [contribution guidance](../../CONTRIBUTING.md). A shared pack mechanism needs evidence that these practices are useful across workspaces before it is added.

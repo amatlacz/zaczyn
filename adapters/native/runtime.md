@@ -1,0 +1,27 @@
+# Native workspace adapter
+
+These exported skills work in Codex, Antigravity, and Kiro. Select the instructions for the host actually running this session, not the app that last edited the project. Codex and Antigravity may share .agents/skills; their exported skill contents are identical. Kiro uses .kiro/skills. Supporting procedure copies are references, not additional installed skills.
+
+Keep the selected work folder separate from this installed skill directory. Save AGENTS.md and PROJECT.md in the work folder when setup calls for them. Shipped templates are not existing user context. Keep personal procedures and preferences outside shipped Zaczyn skill folders and read only relevant resources.
+
+## Codex
+
+Use the native skill selector or name zaczyn-setup/work/review/grow. In CLI/IDE, `$zaczyn-setup` explicitly selects setup. Codex reads workspace AGENTS.md, which points to PROJECT.md. Respect AGENTS.override.md and closer instruction precedence; no CLAUDE wrapper is needed. If skills do not refresh, start a new session or restart the app.
+
+Official mechanisms: [skills](https://learn.chatgpt.com/docs/build-skills), [context](https://learn.chatgpt.com/docs/agent-configuration/agents-md).
+
+## Antigravity
+
+Ask for the skill by name in a new conversation. Current workspace discovery uses .agents/skills. For editor context, use Customizations → Rules to create or reuse a workspace rule set to Always On that says: “Read AGENTS.md in the workspace root before work; follow its PROJECT.md pointer.” Keep it a pointer, not a copy of preferences. Verify the rule's activation setting through the UI; a Markdown file alone does not prove Always On is configured. If the actual host already demonstrably loads AGENTS, reuse that mechanism.
+
+Official mechanisms: [skills](https://antigravity.google/docs/skills), [rules](https://antigravity.google/docs/rules-workflows).
+
+## Kiro
+
+Ask for the skill by name. Workspace skills live in .kiro/skills; the IDE's Agent Steering & Skills panel also supports Import a skill → Local folder. Import a complete exported folder. Kiro documents root AGENTS.md loading, so no duplicate steering wrapper is needed for the default agent. Custom agents have their own resources configuration; verify it instead of assuming default discovery.
+
+Official mechanisms: [skills](https://kiro.dev/docs/skills/), [steering](https://kiro.dev/docs/steering/).
+
+## Verify the actual state
+
+Distinguish copying folders, native discovery, successful invocation/resource access, and fresh-session context loading. Record scope and observed evidence for each claim. This adapter does not prove a connected tool is installed, signed in, or usable. Configure only selected additions through supported host mechanisms. When a UI-only step cannot be performed with available tools, give the precise action and leave that state unverified.

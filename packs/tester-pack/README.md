@@ -1,10 +1,5 @@
-# Tester Pack (stub)
+# Tester pack — deferred
 
-Audience overlay for software testers. Packs customize Zaczyn without touching the core.
+This is a reserved idea, not an installable pack or an implemented override system. Zaczyn reuses a testing project's existing plans, tools, and standards rather than wrapping them in a second lifecycle.
 
-A pack may provide:
-- **Vocabulary & examples** for the intake ("test plan", "regression suite", "sprint review" instead of generic terms)
-- **Extra routing entries** (e.g. Q1 = automated tests → Build route with testing conventions; recurring test-case review → Workflow route with test-management MCP suggestions)
-- **Templates** (test plan skeletons, charter formats)
-
-Status: stub — first real content will come from actual tester use cases. Contribute yours via the issue templates.
+Contribute a concrete local checklist, working pattern, or example first. See [contribution guidance](../../CONTRIBUTING.md). A shared pack mechanism needs evidence that these practices are useful across workspaces before it is added.

@@ -1,68 +1,74 @@
 # Zaczyn
 
-> *(say: "ZAH-chin" — Polish for sourdough starter)*
->
-> **A sourdough starter for AI agent projects.**
+*Say “ZAH-chin” — Polish for sourdough starter.*
 
-Zaczyn is a clonable starter kit that turns a blank agent workspace (Claude Cowork, Claude Code, and similar tools) into a well-structured project — by **interviewing you** instead of assuming you already know what to ask for.
+**Build a way of working with AI that fits you. Start small, and grow it at your pace.**
 
-Like a sourdough starter: clone the living base, feed it your own flour, grow your own bread.
+Zaczyn is a starter for native AI agent workspaces, targeting Claude Code, Codex, Antigravity, and Kiro. It helps you set up a project, recurring professional workflow, or personal assistant. It asks useful questions, suggests possibilities you may not know to request, and helps turn your choices into working context, practices, and tools.
 
-## Why this exists
+You do not need to know which skills or libraries to install. You explain your work; Zaczyn helps you explore the options and decide how far to go. Like a sourdough starter, the base stays small while what you make with it can grow.
 
-Agent tools ship raw capabilities — a skill creator, an empty folder, a blinking cursor. If you're new to agents, you're at the *"don't know what you don't know"* stage: you can't see the potential, and when you try, it's easy to misuse. The capabilities aren't too generic. They're **unrouted**.
+## Start in the app you use
 
-Zaczyn routes them. A short intake interview asks about *your* world — what should exist when we're done? one-off or recurring? where does the raw material live? — and maps your answers to a curated, opinionated setup: folder structure, context files for your agents, and recommended frameworks, MCP servers, and skills.
+Start with [START.md](START.md) for your actual agent environment:
 
-## The founding story
+| Your environment | Current delivery status |
+|---|---|
+| Claude Code | Native plugin loaded into a terminal session; setup and owner-reported fresh-session context recovery checked in bounded cases. |
+| [Codex](adapters/codex/README.md) | Four workspace skills discovered; owner quick-setup artifacts reviewed and fresh-session context recovery checked. |
+| [Antigravity](adapters/antigravity/README.md) and [Kiro](adapters/kiro/README.md) | Experimental workspace packages and guides; package integrity checked, actual host behavior unverified. |
 
-Zaczyn's author built a conference workshop with a companion app. The app — a general, reusable product — lived in one repo with a spec-driven development framework (similar to [spec-kit](https://github.com/github/spec-kit)). The workshop content — exercises, character portraits, slides, a one-time instance — lived in a separate folder with custom skills. Content constantly fed between them, and with two disconnected workspaces he became the **human message bus**: an evening spent manually copy-pasting artifacts that neither agent could see.
+Version 0.5 provides a Claude plugin plus separate native skill ZIPs for Codex, Antigravity, and Kiro. Each exported skill carries its own linked resources, so importing one folder keeps them intact. Codex and Antigravity can share the same installed skill files. Your work and customizations live in your own workspace. A source checkout can also load the Claude plugin directly. There is no need to upload project files to a browser to follow the native path.
 
-The failure wasn't in either workflow. It was the missing setup: no shared root, no `shared/` bridge between tracks, no product/instance split, no `scratch/` zone to contain the brainstorm mess. Zaczyn exists so *your* first evening isn't spent as a highly overqualified clipboard.
+[Adapters](adapters/README.md) explain current support and the explicit-read fallback. The optional chat edition and Cowork path remain available separately. Local ZIPs are prepared artifacts, not a published release. See [verification scope](docs/verification.md) for exact evidence and limits.
 
-## How it works
+Start by saying:
 
-1. **Clone** this repository (or copy it into your workspace).
-2. **Install the skills** so your agent can find them. Claude Code / Cowork only discover skills under `.claude/skills/`, so this is a required first step — see [adapters/claude/README.md](adapters/claude/README.md).
-3. **Run the intake** — point your agent at `core/intake/SKILL.md` and say "help me set up my project."
-4. **Answer up to six plain-language questions.** No jargon; the routing table translates.
-5. **Get a scaffolded workspace** — folders, `PROJECT.md`, `DECISIONS.md`, agent context files, and recommendations — with every step explained in plain language, because the scaffolding *is* the curriculum.
+> Help me set this up for my work. I want to understand what AI could help with and choose how much to customize before we start a task.
 
-## Repository map
+## Choose your depth
 
-```
-core/        the portable heart: intake skill, scaffolder, routing table, templates (plain Markdown)
-packs/       audience overlays: tester-pack, founder-pack (vocabulary, examples, extra routes)
-adapters/    thin per-tool wrappers (Claude today; your favorite tool tomorrow — PRs welcome)
-docs/        concept document, field guide, brainstorm logs
-```
+| Depth | What happens |
+|---|---|
+| Quick | A short exchange, essential context, and a small recommendation. Aim for roughly two minutes for a simple setup. |
+| Guided | Explore responsibilities, recurring work, existing tools and material, then choose useful improvements. |
+| Deep | Develop a richer professional or personal assistant in resumable sessions, using selected background, examples, and specialist procedures. |
 
-## Recommended tooling
+You can skip questions, stop, or deepen the setup later. An example task helps explain your needs; setup does not silently execute it. When ready, choose to start work, customize further, or stop. If you explicitly asked for setup followed by execution, it can proceed without asking again.
 
-Everything in this repository is **plain Markdown** — `PROJECT.md`, `DECISIONS.md`, skills, templates, and docs. You *can* read it all in a plain text editor or on GitHub, but the experience is much nicer with an app that renders and edits Markdown (with live preview, wiki-style links, and folder navigation).
+A tester might choose an issue-report checklist; a founder might choose an interview-synthesis procedure; an analyst might choose source-reconciliation checks. Your actual work determines the recommendation. There is no compulsory profession pack or default tool stack.
 
-Any of these work well:
+## Four intents
 
-- **[Obsidian](https://obsidian.md/)** — local-first, free for personal use; great for browsing linked notes and folders as a "vault." (If you use it, note that `.gitignore` already excludes its `.obsidian/` config folder.)
-- **[VS Code](https://code.visualstudio.com/)** — free and cross-platform; built-in Markdown preview (`⇧⌘V` / `Ctrl+Shift+V`) and syntax highlighting, ideal if you're already editing code.
-- **[Typora](https://typora.io/)** — a clean, seamless WYSIWYG editor that renders Markdown in place as you type (one-time paid license).
-- **[Zettlr](https://www.zettlr.com/)** — free and open source, aimed at researchers and academic writers.
-- **[Logseq](https://logseq.com/)** — free, local-first outliner for block-based, heavily linked notes.
-- **[Mark Text](https://www.marktext.cc/)** — free and open source, minimal real-time-preview editor.
+| Intent | Responsibility |
+|---|---|
+| [Setup](core/skills/zaczyn-setup/SKILL.md) | Discover needs, propose a personalized environment, and implement selected additions where supported. |
+| [Work](core/skills/zaczyn-work/SKILL.md) | Plan, execute, pause, resume, and organize work using your selected practices. |
+| [Review](core/skills/zaczyn-review/SKILL.md) | Check actual evidence, including artifacts with no prior task note. Review-only leaves the result unchanged. |
+| [Grow](core/skills/zaczyn-grow/SKILL.md) | Add, revise, or remove practices as your needs develop, with appropriate checks and undo guidance. |
 
-Pick whichever fits your workflow — the point is simply to have *something* that displays and edits Markdown comfortably while you work with this starter kit.
+These are intents, not four mandatory phases. Planning and archiving do not require extra skills. Normal completion includes review; a pause keeps unfinished work open. A quick job needs no task note.
 
-## Status
+## Your setup belongs to you
 
-Early. The concept is locked (see [docs/brainstorm/session-01.md](docs/brainstorm/session-01.md)); the skills are stubs growing into their final shape. Expect the glassware to be unpolished — feedback and real-world messy project stories are the most valuable contribution right now.
+For a new local workspace, Zaczyn saves:
 
-## Contributing
+- `AGENTS.md`: how the assistant should work and when to use your selected procedures.
+- `PROJECT.md`: purpose, facts, material, and scope; unfinished setup can keep a short checkpoint here.
+- Only the context wrapper required by your host. For Claude Code, `CLAUDE.md` imports `AGENTS.md`.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). The fastest ways to help:
-- **Suggest a project type** or **an entry for the routing table** (issue templates provided)
-- Share a real "my workspace turned into chaos" story — failures design the fixes here
-- Add a pack for your profession
+Long profiles, templates, skills, and task records appear only when they help. Existing workflows and legacy files stay authoritative until you choose a migration. See [migration and updates](docs/migration.md).
 
-## License
+In a chat project, the equivalent documents are uploaded sources. Prepared text is not automatically saved: the assistant explains what to replace and how to continue in a new chat. Moving hosts is an explicit transfer of selected context, not automatic memory synchronization.
 
-[MIT](LICENSE) — clone it, feed it, bake freely.
+A rich assistant can have many skills and a long profile. Zaczyn keeps a concise index and consults relevant material when needed. It distinguishes suggestions, configured capabilities, and actual successful trials; a tool is never called installed merely because it was recommended.
+
+[See a guided setup example](examples/guided-setup/README.md), [a small work record](examples/attendance-summary/README.md), or [learn what deserves a skill](docs/field-guide/what-is-a-skill.md).
+
+## For contributors
+
+The source clone is the contributor path. `core/` contains portable behavior; `adapters/` explains host differences; the builder generates native and chat editions from that source. Start with [CONTRIBUTING.md](CONTRIBUTING.md).
+
+To create the ZIPs from this checkout, run `python3 scripts/build_bundle.py`. Find them in `dist/`; generated downloads are not committed to the repository. Python 3.9 or newer is required for building, not for using the skills.
+
+[MIT license](LICENSE).
