@@ -4,7 +4,7 @@ Updated 2026-09-09. Current edition: **0.5.1**. Source implementation, package i
 
 ## Acceptance for 0.5.1
 
-The maintainer accepted the bounded Claude Code and Codex evidence for this version and explicitly deferred Antigravity/Kiro testing. Those two packages remain experimental, with no runtime-support claim. Further model tests and novice observation are not requirements for this source handoff. The unverified 0.5.1 wording regeneration and optional chat failure remain documented limitations, not passing tests. Publishing the source or release archives is a separate maintainer action.
+The maintainer accepted the bounded Claude Code and Codex evidence for this version and explicitly deferred Antigravity/Kiro testing. Those two packages remain experimental, with no runtime-support claim. Further model tests and novice observation are not requirements for this source handoff. The unverified 0.5.1 wording regeneration and optional chat failure remain documented limitations, not passing tests. Release downloads and source history are available from [the 0.5.1 release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.1). Publication does not extend the test coverage described here.
 
 ## Native delivery: 0.5
 
@@ -90,4 +90,4 @@ This focused case passed its scope, authority, language, and local-template chec
 
 ## Deferred work and publication
 
-The earlier comparison and bounded host checks do not establish broad superiority or novice usability. A real inexperienced-user observation and publication remain deferred by the owner. These archives are local builds; no release, tag, or marketplace listing was published.
+The earlier comparison and bounded host checks do not establish broad superiority or novice usability. A real inexperienced-user observation and publication remain deferred by the owner. Version 0.5.1 is distributed through GitHub release archives and a source tag. No marketplace listing is provided. The release includes the bounded evidence above; deferred tests remain unverified.

@@ -9,6 +9,8 @@ Zaczyn runs in a native agent working with your project folder. Choose the packa
 | Antigravity (experimental) | `zaczyn-antigravity-0.5.1.zip`; [Antigravity guide](adapters/antigravity/README.md) |
 | Kiro (experimental) | `zaczyn-kiro-0.5.1.zip`; [Kiro guide](adapters/kiro/README.md) |
 
+Download the prepared ZIP from the [0.5.1 release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.1). Choose the named app package above, not GitHub's automatically generated source-code archive. Ordinary users do not need to clone or build the repository. You need the selected AI app installed and working before installation.
+
 ## Claude Code
 
 Keep the framework and your work in separate folders:
@@ -30,7 +32,7 @@ Inside that session, use `/zaczyn:zaczyn-setup` and describe your work. No brows
 
 Extract the matching host ZIP and read its README. It contains a `skills/` directory with four complete skill folders. Ask the agent to install them into your selected work folder following that README, or copy them manually to the documented destination. Codex and Antigravity use `.agents/skills/`; Kiro uses `.kiro/skills/` or its local-folder import UI. No terminal installer is required for these packages.
 
-These are generated workspace skill packages, not a hosted marketplace release. Codex discovery and bounded owner setup/context checks are recorded. Antigravity/Kiro are experimental: their actual host behavior is unverified, and testing is deferred. See [verification](docs/verification.md). An agent must distinguish copying files from verifying discovery and use.
+These are workspace skill packages distributed as GitHub release downloads; they are not marketplace installations. Codex discovery and bounded owner setup/context checks are recorded. Antigravity/Kiro are experimental: their actual host behavior is unverified, and testing is deferred. See [verification](docs/verification.md). An agent must distinguish copying files from verifying discovery and use.
 
 ## Your first conversation
 

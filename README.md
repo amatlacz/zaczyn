@@ -8,23 +8,36 @@ Zaczyn is a starter for native AI agent workspaces, targeting Claude Code, Codex
 
 You do not need to know which skills or libraries to install. You explain your work; Zaczyn helps you explore the options and decide how far to go. Like a sourdough starter, the base stays small while what you make with it can grow.
 
-## Start in the app you use
+## Download, install, and start
 
-Start with [START.md](START.md) for your actual agent environment:
+You need your AI app installed and working. Download the **0.5.1 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages.
 
-| Your environment | Current delivery status |
-|---|---|
-| Claude Code | Native plugin loaded into a terminal session; setup and owner-reported fresh-session context recovery checked in bounded cases. |
-| [Codex](adapters/codex/README.md) | Four workspace skills discovered; owner quick-setup artifacts reviewed and fresh-session context recovery checked. |
-| [Antigravity](adapters/antigravity/README.md) and [Kiro](adapters/kiro/README.md) | Experimental workspace packages and guides; package integrity checked, actual host behavior unverified. |
+| App | Download | Installation guide | Verification |
+|---|---|---|---|
+| Claude Code | [Claude ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-0.5.1.zip) | [Claude guide](adapters/claude/README.md) | Bounded plugin, setup, and context checks |
+| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-codex-0.5.1.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
+| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-antigravity-0.5.1.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
+| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-kiro-0.5.1.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
 
-Version 0.5 provides a Claude plugin plus separate native skill ZIPs for Codex, Antigravity, and Kiro. Each exported skill carries its own linked resources, so importing one folder keeps them intact. Codex and Antigravity can share the same installed skill files. Your work and customizations live in your own workspace. A source checkout can also load the Claude plugin directly. There is no need to upload project files to a browser to follow the native path.
+1. **Download and extract.** Keep the extracted package somewhere convenient, such as Downloads. Keep its folders complete.
+2. **Install in your work environment.** Open or create your own work folder, such as “My workshops.” For Codex, open it in the app and give the agent the extracted package's README with this request: “Follow this README to install Zaczyn in my current work folder. Preserve my existing files.” It copies the four complete skills into `.agents/skills/`. For Antigravity or Kiro, follow the linked host guide. For Claude Code, use the terminal command below from your work folder.
+3. **Start setup.** In Codex, start a fresh task in that same work folder and invoke `$zaczyn-setup`. In the Claude session, invoke `/zaczyn:zaczyn-setup`. Describe your work using the prompt below, then choose quick, guided, or deep. Setup saves your preferences and context before you choose whether to start a task.
 
-[Adapters](adapters/README.md) explain current support and the explicit-read fallback. The optional chat edition and Cowork path remain available separately. Local ZIPs are prepared artifacts, not a published release. See [verification scope](docs/verification.md) for exact evidence and limits.
+Claude Code's terminal launch command (replace the example with your extracted framework folder):
 
-Start by saying:
+```bash
+claude --plugin-dir /absolute/path/to/extracted/zaczyn
+```
 
-> Help me set this up for my work. I want to understand what AI could help with and choose how much to customize before we start a task.
+This loads Zaczyn for that terminal session. Use the command again when starting another session; it does not configure a separate Claude app window.
+
+First setup prompt:
+
+> Help me customize this workspace for my work. Show me quick, guided, and deep setup options. Ask about my needs and suggest useful improvements before starting a task.
+
+Your work stays in your own folder. Zaczyn saves `AGENTS.md` for working preferences and `PROJECT.md` for project facts; Claude Code also gets a `CLAUDE.md` pointer. Additional tools, templates, and procedures are added only when selected. Later, use work to plan or execute, review to assess a result, and grow to adjust your setup.
+
+[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.1) includes checksum files and the optional chat edition. Read the [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
 
 ## Choose your depth
 
