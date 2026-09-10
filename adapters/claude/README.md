@@ -1,13 +1,15 @@
-# Claude adapter
+# Claude Code installation
 
-Use the native `zaczyn-0.5.1.zip`. Its `.claude-plugin/plugin.json` points to `./core/skills/`; the complete package keeps shared references and templates available. Do not install the individual core skill folders separately.
+For one project in the Claude Code desktop app, use `zaczyn-claude-project-0.5.2.zip` and the [project-only instructions](../claude-project/README.md). They explain how to put the extracted download in your existing XYZ folder and ask Claude to install its four skills there. No terminal command or global installation is required. Project skills use `/zaczyn-setup`, `/zaczyn-work`, `/zaczyn-review`, and `/zaczyn-grow`.
 
-## Claude Code — native session path
+The plugin package `zaczyn-0.5.2.zip` remains an alternative for terminal users and plugin workflows. Its complete folder contains `.claude-plugin/plugin.json`, core skills, and shared references. The following section applies to that alternative only.
+
+## Optional terminal plugin path
 
 Extract the complete native bundle, retaining the hidden `.claude-plugin/` folder. From your work folder launch:
 
 ```bash
-claude --plugin-dir /absolute/path/to/zaczyn-0.5.1
+claude --plugin-dir /absolute/path/to/zaczyn-0.5.2
 ```
 
 | Intent | Command |
@@ -20,7 +22,7 @@ claude --plugin-dir /absolute/path/to/zaczyn-0.5.1
 The flag loads that plugin for this terminal session. It does not configure a different app window. Check the four entries before testing behavior. If missing, verify the exact folder contains `.claude-plugin/plugin.json` and `core/`, then run:
 
 ```bash
-claude plugin validate /absolute/path/to/zaczyn-0.5.1
+claude plugin validate /absolute/path/to/zaczyn-0.5.2
 ```
 
 After repairing a package, exit and relaunch with the flag. A response that finds a different source checkout is not a successful plugin test. Persistent installations require their own host verification; session loading is the bounded testing path here. See the [plugin reference](https://code.claude.com/docs/en/plugins-reference).

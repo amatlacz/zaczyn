@@ -1,6 +1,12 @@
 # What has been checked
 
-Updated 2026-09-09. Current edition: **0.5.1**. Source implementation, package integrity, actual host behavior, and beginner usability are separate claims.
+Updated 2026-09-10. Current edition: **0.5.2**. Source implementation, package integrity, actual host behavior, and beginner usability are separate claims.
+
+## Claude Code project installation: 0.5.2
+
+The 0.5.1 Claude download offered a session-loaded plugin and omitted an approachable project-only desktop path. Version 0.5.2 adds `zaczyn-claude-project-0.5.2.zip`, with four complete exported skills for `XYZ/.claude/skills/`. The README now leads with copying the extracted download into XYZ and asking the local agent to install it there. Project commands use `/zaczyn-setup` without a plugin namespace. The native runtime includes the Claude `CLAUDE.md` → `AGENTS.md` → `PROJECT.md` context chain.
+
+The six offline packaging cases cover all six editions, including isolated copies of the new Claude skills. Actual Claude desktop discovery/invocation has not been observed for this package. The official [skills](https://code.claude.com/docs/en/skills) and [desktop](https://code.claude.com/docs/en/desktop) documentation establish the project-skill mechanism; earlier CLI plugin evidence below is not a desktop installation test. No new model test or global installation is performed for this correction. Published 0.5.1 assets remain unchanged.
 
 ## Acceptance for 0.5.1
 

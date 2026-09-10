@@ -10,26 +10,20 @@ You do not need to know which skills or libraries to install. You explain your w
 
 ## Download, install, and start
 
-You need your AI app installed and working. Download the **0.5.1 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages.
+You need your AI app installed and working. Download the **0.5.2 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages.
 
 | App | Download | Installation guide | Verification |
 |---|---|---|---|
-| Claude Code | [Claude ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-0.5.1.zip) | [Claude guide](adapters/claude/README.md) | Bounded plugin, setup, and context checks |
-| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-codex-0.5.1.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
-| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-antigravity-0.5.1.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
-| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.1/zaczyn-kiro-0.5.1.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
+| Claude Code (one project, desktop or terminal) | [Claude project ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-claude-project-0.5.2.zip) | [Project-only guide](adapters/claude-project/README.md) | Package checks; earlier plugin/setup evidence; desktop install unverified |
+| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-codex-0.5.2.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
+| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-antigravity-0.5.2.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
+| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-kiro-0.5.2.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
 
-1. **Download and extract.** Keep the extracted package somewhere convenient, such as Downloads. Keep its folders complete.
-2. **Install in your work environment.** Open or create your own work folder, such as “My workshops.” For Codex, open it in the app and give the agent the extracted package's README with this request: “Follow this README to install Zaczyn in my current work folder. Preserve my existing files.” It copies the four complete skills into `.agents/skills/`. For Antigravity or Kiro, follow the linked host guide. For Claude Code, use the terminal command below from your work folder.
-3. **Start setup.** In Codex, start a fresh task in that same work folder and invoke `$zaczyn-setup`. In the Claude session, invoke `/zaczyn:zaczyn-setup`. Describe your work using the prompt below, then choose quick, guided, or deep. Setup saves your preferences and context before you choose whether to start a task.
+1. **Download and extract.** Keep all files together. For an existing project folder named `XYZ`, rename the extracted folder `zaczyn-install` and copy it into `XYZ`. You should now have `XYZ/zaczyn-install/README.md` and `XYZ/zaczyn-install/skills/`.
+2. **Install for that project.** Open `XYZ` itself in your AI app as a local project and send: “Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start setup yet.” For Claude Code, this copies four complete skill folders to `XYZ/.claude/skills/`; Codex uses `XYZ/.agents/skills/`. The package's README provides the exact host-specific rules.
+3. **Start setup.** Start a fresh local conversation in `XYZ`. In Claude Code, type `/zaczyn-setup` in the message box and select it. In Codex, use `$zaczyn-setup`. These are messages in your app, not terminal commands. Add the setup prompt below and choose quick, guided, or deep.
 
-Claude Code's terminal launch command (replace the example with your extracted framework folder):
-
-```bash
-claude --plugin-dir /absolute/path/to/extracted/zaczyn
-```
-
-This loads Zaczyn for that terminal session. Use the command again when starting another session; it does not configure a separate Claude app window.
+This installation is scoped to `XYZ` and its relevant subdirectories. It does not install Zaczyn for your account or unrelated projects. Once the four complete skill folders are installed, `zaczyn-install` is no longer needed by the skills and can be moved out of your project. For terminal users who prefer plugins, the [Claude guide](adapters/claude/README.md) retains the alternative `--plugin-dir` path.
 
 First setup prompt:
 
@@ -37,7 +31,7 @@ First setup prompt:
 
 Your work stays in your own folder. Zaczyn saves `AGENTS.md` for working preferences and `PROJECT.md` for project facts; Claude Code also gets a `CLAUDE.md` pointer. Additional tools, templates, and procedures are added only when selected. Later, use work to plan or execute, review to assess a result, and grow to adjust your setup.
 
-[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.1) includes checksum files and the optional chat edition. Read the [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
+[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.2) includes checksum files and the optional chat edition. Read the [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
 
 ## Choose your depth
 

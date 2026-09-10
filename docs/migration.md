@@ -1,5 +1,11 @@
 # Updating Zaczyn
 
+## Claude project skills in 0.5.2
+
+For one Claude Code project, including a desktop local session, use the new `zaczyn-claude-project-0.5.2.zip` and its [project-only guide](../adapters/claude-project/README.md). It installs four self-contained folders in that project’s `.claude/skills/`; it does not require a terminal launch or global plugin. Do not copy raw core skill folders from the earlier plugin ZIP because their references live outside those folders.
+
+Existing AGENTS, PROJECT, CLAUDE, and outputs stay in place. If the same session also loads the Zaczyn plugin, choose one installation path to avoid confusing duplicate commands. The plugin remains an optional supported packaging format; previously published assets are unchanged.
+
 ## Native packages in 0.5
 
 The four intents and AGENTS/PROJECT ownership stay the same. Codex, Antigravity, and Kiro gain generated workspace skill packages. Use the matching host ZIP and install the four folders from its skills directory, following the included README. Codex/Antigravity target .agents/skills; Kiro targets .kiro/skills. These are workspace installs, not automatic marketplace registration.

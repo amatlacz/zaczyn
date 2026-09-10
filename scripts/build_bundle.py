@@ -11,7 +11,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 EXPECTED = {'zaczyn-setup', 'zaczyn-work', 'zaczyn-review', 'zaczyn-grow'}
-HOSTS = ('codex', 'antigravity', 'kiro')
+HOSTS = ('claude-project', 'codex', 'antigravity', 'kiro')
 LINK = re.compile(r'\[([^\]]*)\]\(([^)]+)\)')
 
 

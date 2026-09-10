@@ -26,9 +26,10 @@ From the source checkout, with Python 3.9 or newer:
 python3 scripts/build_bundle.py
 ```
 
-The builder creates five reproducible editions and a `.zip.sha256` sidecar for each:
+The builder creates six reproducible editions and a `.zip.sha256` sidecar for each:
 
 - `dist/zaczyn-<VERSION>.zip`: native plugin and starter-folder fallback, with the hidden `.claude-plugin/` manifest, portable core, host guides, and examples.
+- `dist/zaczyn-claude-project-<VERSION>.zip`: four self-contained project skills for Claude Code desktop/local sessions, with project-only installation instructions.
 - `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, and `dist/zaczyn-kiro-<VERSION>.zip`: a host guide and four self-contained skill folders for workspace installation/import.
 - `dist/zaczyn-chat-<VERSION>.zip`: complete `ZACZYN.md` reference compiled from that core, short project instructions, and chat-specific start/verification guidance.
 
@@ -48,7 +49,7 @@ If Claude Code is installed, validate the manifest without running an agent:
 claude plugin validate .
 ```
 
-Verify checksums from the distribution directory with `shasum -a 256 -c *.zip.sha256`. The builder does not install or publish anything. Before advertising a tested host, record its version, successful discovery and invocation, shared-resource loading outside the clone, context behavior, and update/rollback outcome. For chat editions, also verify that a fresh conversation reads saved user context and distinguishes a prepared replacement from an updated project source. CLI simulation does not verify the graphical Cowork or ChatGPT flow. Record limits in [verification](docs/verification.md). Six offline test cases cover all five editions, deterministic builds, source propagation, missing resources, isolated skill copies, identical cross-host skills, and accidental active templates. An actual local skill-discovery API call can add evidence without starting a model turn; it still does not prove behavior. A published download or marketplace entry is a separate release action.
+Verify checksums from the distribution directory with `shasum -a 256 -c *.zip.sha256`. The builder does not install or publish anything. Before advertising a tested host, record its version, successful discovery and invocation, shared-resource loading outside the clone, context behavior, and update/rollback outcome. For chat editions, also verify that a fresh conversation reads saved user context and distinguishes a prepared replacement from an updated project source. CLI simulation does not verify the graphical Cowork or ChatGPT flow. Record limits in [verification](docs/verification.md). Six offline test cases cover all six editions, deterministic builds, source propagation, missing resources, isolated skill copies, identical cross-host skills, and accidental active templates. An actual local skill-discovery API call can add evidence without starting a model turn; it still does not prove behavior. A published download or marketplace entry is a separate release action.
 
 ## Sign-off (DCO)
 

@@ -4,29 +4,26 @@ Zaczyn runs in a native agent working with your project folder. Choose the packa
 
 | App | Package and instructions |
 |---|---|
-| Claude Code | `zaczyn-0.5.1.zip`; [Claude guide](adapters/claude/README.md) or the source-checkout path below |
-| Codex | `zaczyn-codex-0.5.1.zip`; [Codex guide](adapters/codex/README.md) |
-| Antigravity (experimental) | `zaczyn-antigravity-0.5.1.zip`; [Antigravity guide](adapters/antigravity/README.md) |
-| Kiro (experimental) | `zaczyn-kiro-0.5.1.zip`; [Kiro guide](adapters/kiro/README.md) |
+| Claude Code | `zaczyn-claude-project-0.5.2.zip`; [project-only desktop instructions](adapters/claude-project/README.md) |
+| Codex | `zaczyn-codex-0.5.2.zip`; [Codex guide](adapters/codex/README.md) |
+| Antigravity (experimental) | `zaczyn-antigravity-0.5.2.zip`; [Antigravity guide](adapters/antigravity/README.md) |
+| Kiro (experimental) | `zaczyn-kiro-0.5.2.zip`; [Kiro guide](adapters/kiro/README.md) |
 
-Download the prepared ZIP from the [0.5.1 release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.1). Choose the named app package above, not GitHub's automatically generated source-code archive. Ordinary users do not need to clone or build the repository. You need the selected AI app installed and working before installation.
+Download the prepared ZIP from the [0.5.2 release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.2). Choose the named app package above, not GitHub's automatically generated source-code archive. Ordinary users do not need to clone or build the repository. You need the selected AI app installed and working before installation.
 
-## Claude Code
+## Claude Code — one project, no terminal required
 
-Keep the framework and your work in separate folders:
+For an existing folder `XYZ`, download `zaczyn-claude-project-0.5.2.zip`. Extract it, rename the extracted folder `zaczyn-install`, and copy it into XYZ. Open XYZ itself as a local project in Claude Code's desktop app and send:
 
-- **Framework folder:** the extracted `zaczyn-0.5.1.zip`, or an existing Zaczyn source checkout. It must contain `core/` and the hidden `.claude-plugin/` directory. Keep the complete folder together.
-- **Work folder:** the project you want to customize. This is where AGENTS.md, PROJECT.md, and your outputs belong.
+> Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start project setup yet.
 
-Open a terminal in your work folder and launch Claude with the path to the framework folder:
+Claude copies the four complete skills into `XYZ/.claude/skills/`. After installation, start a fresh local conversation in XYZ and select `/zaczyn-setup` in the message box. Describe your work and choose a setup depth. The [project-only guide](adapters/claude-project/README.md) has the folder layout, exact copying rules, and update/undo instructions.
 
-```bash
-claude --plugin-dir /absolute/path/to/zaczyn
-```
+Your project context and outputs belong in XYZ. Other unrelated projects are unaffected. This uses Claude Code's local Code sessions; a normal Chat or Cowork conversation is a different environment.
 
-Replace the example path with the actual framework folder. If you already have a source checkout, no ZIP extraction or copying is needed. This flag loads the plugin for that Claude terminal session; it does not install it into another app window. See the [Claude guide](adapters/claude/README.md) for discovery checks and current interface limits.
+### Optional plugin path for terminal users
 
-Inside that session, use `/zaczyn:zaczyn-setup` and describe your work. No browser upload is part of this path.
+The separate `zaczyn-0.5.2.zip` is still a plugin package, as is a source checkout. Keep its complete folder and load it from a terminal session with `claude --plugin-dir /absolute/path/to/framework`. Plugin commands use `/zaczyn:zaczyn-setup`; project-installed skills use `/zaczyn-setup`. See the [Claude guide](adapters/claude/README.md). The flag is not required for the project-only desktop installation above.
 
 ## Codex, Antigravity, and Kiro
 
@@ -54,7 +51,7 @@ If a file-capable host cannot load a native plugin, keep the extracted native bu
 
 ## Optional graphical and chat editions
 
-Cowork plugin upload is described in the [Claude guide](adapters/claude/README.md). The optional `zaczyn-chat-0.5.1.zip` uses uploaded references and project instructions; see the [chat guide](adapters/chatgpt/README.md). These paths are separate from native agent installation and are not required for it.
+Cowork plugin upload is described in the [Claude guide](adapters/claude/README.md). The optional `zaczyn-chat-0.5.2.zip` uses uploaded references and project instructions; see the [chat guide](adapters/chatgpt/README.md). These paths are separate from native agent installation and are not required for it.
 
 If no usable file access or project sources exist, paste the chat edition's project instructions and relevant reference sections, then keep the generated context documents yourself. Continuation requires providing them again. No automatic persistence is promised.
 

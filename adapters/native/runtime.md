@@ -1,8 +1,16 @@
 # Native workspace adapter
 
-These exported skills work in Codex, Antigravity, and Kiro. Select the instructions for the host actually running this session, not the app that last edited the project. Codex and Antigravity may share .agents/skills; their exported skill contents are identical. Kiro uses .kiro/skills. Supporting procedure copies are references, not additional installed skills.
+These exported skills target Claude Code, Codex, Antigravity, and Kiro. Select the instructions for the host actually running this session, not the app that last edited the project. Codex and Antigravity may share .agents/skills; their exported skill contents are identical. Claude Code uses project-local .claude/skills; Kiro uses .kiro/skills. Supporting procedure copies are references, not additional installed skills.
 
 Keep the selected work folder separate from this installed skill directory. Save AGENTS.md and PROJECT.md in the work folder when setup calls for them. Shipped templates are not existing user context. Keep personal procedures and preferences outside shipped Zaczyn skill folders and read only relevant resources.
+
+## Claude Code — project skills
+
+These skills are installed in the selected workspace's .claude/skills directory. Invoke /zaczyn-setup, /zaczyn-work, /zaczyn-review, or /zaczyn-grow. This installation has no plugin namespace and needs no --plugin-dir flag or account-wide installation. In the desktop app, use a local Code session opened on that work folder.
+
+Setup creates or merges root CLAUDE.md with @AGENTS.md; AGENTS points to PROJECT in ordinary language. Preserve unrelated existing CLAUDE instructions and existing authority. Save user context at the project root, not inside .claude/skills. Never install into the user's home .claude directory for a project-only request. If discovery is stale, start a fresh local session in that same folder. File placement alone is not a verified desktop invocation.
+
+Official mechanisms: [project skills](https://code.claude.com/docs/en/skills), [desktop skills](https://code.claude.com/docs/en/desktop), [context](https://code.claude.com/docs/en/memory).
 
 ## Codex
 
