@@ -1,10 +1,10 @@
 # Chat-project runtime
 
-This edition runs the same setup/work/review/grow procedures through ordinary conversation and uploaded reference material. The numbered source sections below are bundled references, not files already present in the user's project. Follow the core's intent and decision boundaries; apply these environment-specific saving and invocation rules when local workspace capabilities are absent.
+This edition runs the same setup/work/review/grow/orchestrate procedures through ordinary conversation and uploaded reference material. The numbered source sections below are bundled references, not files already present in the user's project. Follow the core's intent and decision boundaries; apply these environment-specific saving and invocation rules when local workspace capabilities are absent.
 
 ## Find the intent and reference
 
-When the user asks to set up or personalize, use Setup; asks to plan/do/resume/archive work, use Work; asks to check an artifact, use Review; asks to adapt their process, use Grow. Resolve ambiguous intent briefly. No native slash command, Skill tool, terminal, or plugin directory is required. Read the relevant section and its linked sections only; do not require the user to paste every skill into each request.
+When the user asks to set up or personalize, use Setup; asks to plan/do/resume/archive work, use Work; asks to check an artifact, use Review; asks to adapt their process, use Grow. Use Orchestrate only when named or explicitly requested for cost-aware orchestration. Check actual session delegation and model controls; if absent, complete the task in the current agent and disclose that. A Microsoft 365 Copilot declarative agent uses Copilot's own orchestrator and model; Copilot Studio can call only configured tools, knowledge, and child agents. GitHub Copilot is a different host. Browser project files and instructions do not themselves enable delegation. Resolve ambiguous intent briefly. No native slash command, Skill tool, terminal, or plugin directory is required. Read the relevant section and its linked sections only; do not require the user to paste every skill into each request.
 
 If this reference or necessary context is not accessible, name the missing document and ask for it. Do not pretend a filesystem path or another app's project is accessible. In a capable local-folder environment, use verified host file tools; a normal uploaded-file project does not imply local editing or software installation.
 

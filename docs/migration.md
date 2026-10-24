@@ -1,5 +1,13 @@
 # Updating Zaczyn
 
+## Cost-aware orchestration in 0.6.0
+
+Version 0.6.0 adds `zaczyn-orchestrate` to all six editions. Update the complete five Zaczyn skill folders from the matching workspace package, or select the new complete plugin/chat reference. Back up existing Zaczyn folders outside discovery paths first; preserve unrelated skills, local customizations, AGENTS/PROJECT, and outputs. To roll back to 0.5.2, remove the added `zaczyn-orchestrate` folder and restore the previous four folders, or select the prior plugin/reference. Do not load two versions together.
+
+Activate by name or an explicit request for cost-aware orchestration of a task. It covers that task's follow-ups and ends at completion or cancellation; ordinary Work remains unchanged unless the policy is selected. Start with your strongest available model and high reasoning effort where supported. The orchestrator autonomously routes planning, execution, and checking through capabilities actually exposed by the host. Installing the skill does not add model access or delegation tools.
+
+Native packages carry the same portable policy. Browser environments, including applicable Microsoft Copilot surfaces, can use the chat reference when they can access it; this is reference use, not a native installation claim. See [host capabilities](../adapters/orchestration.md). Without callable delegation the agent explains the limit and continues with one model; manual handoffs are only prepared on request. Host execution and cost savings require your own tests; the bounded release evidence is in [verification](verification.md).
+
 ## Claude project skills in 0.5.2
 
 For one Claude Code project, including a desktop local session, use the new `zaczyn-claude-project-0.5.2.zip` and its [project-only guide](../adapters/claude-project/README.md). It installs four self-contained folders in that project’s `.claude/skills/`; it does not require a terminal launch or global plugin. Do not copy raw core skill folders from the earlier plugin ZIP because their references live outside those folders.

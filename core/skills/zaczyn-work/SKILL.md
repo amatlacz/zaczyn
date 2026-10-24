@@ -19,6 +19,8 @@ Help the user reach the intended result with only the process that helps this ta
 
 Normal follow-ups continue within the selected task without rerunning this triage. A new clearly named task should not be interrupted by a menu of unrelated open items. Follow the workspace conventions for an explicit archive request; no separate skill is needed.
 
+When the user has selected [Orchestrate](../zaczyn-orchestrate/SKILL.md) for this task, apply its cost-aware routing to planning, execution, and completion checking. Ordinary Work does not activate that policy.
+
 ## Establish enough intent
 
 Use existing project/task context; do not require a setup ritual or a particular brief filename before helping. Agree the useful outcome and a few concrete checks, using the user's examples, standards, and material. If the framing may be wrong, ask a natural question such as “What would make this unhelpful?” Do not ask it mechanically.

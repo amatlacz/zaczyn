@@ -1,6 +1,6 @@
 # ChatGPT project edition
 
-Use the **chat edition** (`zaczyn-chat-0.5.2.zip`). It contains a reference generated from the same core as the native bundle. It uses ordinary requests, project instructions, and uploaded documents; no terminal or native skill command is required.
+Use the **chat edition** (`zaczyn-chat-0.6.0.zip`). It contains a reference generated from the same core as the native bundle. It uses ordinary requests, project instructions, and uploaded documents; no terminal or native skill command is required.
 
 ## Start in the app
 
@@ -19,6 +19,8 @@ Ask naturally: “Plan this,” “Continue the saved task,” “Review this wi
 When a document changes, replace its old source with the complete updated version after saving a backup; avoid keeping conflicting copies. The assistant should name the document, explain the change, and distinguish prepared text from a verified saved update. If the host can update and verify project files itself, follow that supported flow instead of doing duplicate manual work.
 
 Before a fresh chat, save the current AGENTS, PROJECT, and any unfinished task record/output. Start the next chat in the same project and ask to continue. If it cannot find the context, attach it explicitly. A conversation transcript or memory feature is not a substitute for verifying the current documents.
+
+For cost-aware orchestration, explicitly ask for `zaczyn-orchestrate`. Check the current chat for real delegation controls; uploaded guidance alone does not add them. See the [host capability guide](../orchestration.md), including Microsoft Copilot and browser reference paths.
 
 For richer setups, add only the profile/reference material you choose and keep a short index in PROJECT. Moving to another app is an explicit export/import of selected documents, not automatic synchronization.
 

@@ -10,7 +10,8 @@ from urllib.parse import unquote, urlsplit
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-EXPECTED = {'zaczyn-setup', 'zaczyn-work', 'zaczyn-review', 'zaczyn-grow'}
+PUBLIC_SKILLS = ('zaczyn-setup', 'zaczyn-work', 'zaczyn-review', 'zaczyn-grow', 'zaczyn-orchestrate')
+EXPECTED = set(PUBLIC_SKILLS)
 HOSTS = ('claude-project', 'codex', 'antigravity', 'kiro')
 LINK = re.compile(r'\[([^\]]*)\]\(([^)]+)\)')
 
@@ -42,7 +43,7 @@ def check_tree(root):
         raise ValueError('Unexpected skill directory')
     skills = list((root / 'core/skills').glob('*/SKILL.md'))
     if {p.parent.name for p in skills} != EXPECTED:
-        raise ValueError('Bundle must contain exactly the four public skills')
+        raise ValueError('Bundle skills differ from declared public skills')
     for path in skills:
         text = path.read_text(encoding='utf-8')
         if not text.startswith('---\n') or '\n---\n' not in text[4:]:
@@ -93,6 +94,8 @@ def skill_payload(native, skill):
             return 'SKILL.md'
         if source == runtime:
             return 'references/host.md'
+        if source == 'adapters/orchestration.md':
+            return 'references/orchestration.md'
         if not source.startswith('core/'):
             raise ValueError('Unbundled native reference: ' + source)
         path = 'references/' + source
@@ -136,9 +139,13 @@ def skill_payload(native, skill):
 
 
 def host_payload(native, host):
-    result = {'README.md': native['adapters/' + host + '/README.md'].replace(b'../../docs/verification.md', b'verification.md'),
+    guide = native['adapters/' + host + '/README.md']
+    guide = guide.replace(b'../../docs/verification.md', b'verification.md')
+    guide = guide.replace(b'../orchestration.md', b'orchestration.md')
+    result = {'README.md': guide,
               'VERSION': native['VERSION'], 'LICENSE': native['LICENSE'],
-              'verification.md': native['docs/verification.md']}
+              'verification.md': native['docs/verification.md'],
+              'orchestration.md': native['adapters/orchestration.md']}
     for skill in sorted(EXPECTED):
         for path, content in skill_payload(native, skill).items():
             result['skills/' + skill + '/' + path] = content
@@ -148,7 +155,7 @@ def host_payload(native, host):
 def check_host_tree(root):
     entries = sorted((root / 'skills').glob('*/SKILL.md'))
     if {p.parent.name for p in entries} != EXPECTED:
-        raise ValueError('Native export must have exactly four skill entries')
+        raise ValueError('Native export skills differ from declared public skills')
     if set(root.rglob('SKILL.md')) != set(entries):
         raise ValueError('Supporting procedures became discoverable skills')
     if list(root.rglob('AGENTS.md')) or list(root.rglob('AGENTS.override.md')):
@@ -169,7 +176,7 @@ def check_host_tree(root):
 def chat_payload(native, version):
     runtime = 'adapters/chatgpt/runtime.md'
     ordered = [runtime, 'core/references/workspace.md']
-    ordered += ['core/skills/'+name+'/SKILL.md' for name in ['zaczyn-setup','zaczyn-work','zaczyn-review','zaczyn-grow']]
+    ordered += ['core/skills/'+name+'/SKILL.md' for name in PUBLIC_SKILLS]
     ordered += sorted(n for n in native if n.startswith('core/') and n.endswith('.md') and n not in ordered)
     def rewrite(source, match):
         label, target = match.groups()
@@ -202,8 +209,9 @@ def chat_payload(native, version):
     result = {
         'ZACZYN.md': ('\n'.join(lines)+'\n').encode(),
         'PROJECT-INSTRUCTIONS.txt': native['adapters/chatgpt/PROJECT-INSTRUCTIONS.txt'],
-        'START.md': native['adapters/chatgpt/README.md'].replace(b'../../docs/verification.md',b'verification.md'),
+        'START.md': native['adapters/chatgpt/README.md'].replace(b'../../docs/verification.md',b'verification.md').replace(b'../orchestration.md',b'orchestration.md'),
         'verification.md': native['docs/verification.md'],
+        'orchestration.md': native['adapters/orchestration.md'],
         'VERSION': native['VERSION'], 'LICENSE': native['LICENSE'],
     }
     return result

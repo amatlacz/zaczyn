@@ -1,15 +1,17 @@
 # Claude Code installation
 
-For one project in the Claude Code desktop app, use `zaczyn-claude-project-0.5.2.zip` and the [project-only instructions](../claude-project/README.md). They explain how to put the extracted download in your existing XYZ folder and ask Claude to install its four skills there. No terminal command or global installation is required. Project skills use `/zaczyn-setup`, `/zaczyn-work`, `/zaczyn-review`, and `/zaczyn-grow`.
+For one project in the Claude Code desktop app, use `zaczyn-claude-project-0.6.0.zip` and the [project-only instructions](../claude-project/README.md). They explain how to put the extracted download in your existing XYZ folder and ask Claude to install its five skills there. No terminal command or global installation is required. Project skills use `/zaczyn-setup`, `/zaczyn-work`, `/zaczyn-review`, `/zaczyn-grow`, and `/zaczyn-orchestrate`.
 
-The plugin package `zaczyn-0.5.2.zip` remains an alternative for terminal users and plugin workflows. Its complete folder contains `.claude-plugin/plugin.json`, core skills, and shared references. The following section applies to that alternative only.
+Use orchestrate only by name or an explicit cost-aware orchestration request; see the [host capability guide](../orchestration.md).
+
+The plugin package `zaczyn-0.6.0.zip` remains an alternative for terminal users and plugin workflows. Its complete folder contains `.claude-plugin/plugin.json`, core skills, and shared references. The following section applies to that alternative only.
 
 ## Optional terminal plugin path
 
 Extract the complete native bundle, retaining the hidden `.claude-plugin/` folder. From your work folder launch:
 
 ```bash
-claude --plugin-dir /absolute/path/to/zaczyn-0.5.2
+claude --plugin-dir /absolute/path/to/zaczyn-0.6.0
 ```
 
 | Intent | Command |
@@ -19,10 +21,10 @@ claude --plugin-dir /absolute/path/to/zaczyn-0.5.2
 | Review | `/zaczyn:zaczyn-review` |
 | Grow | `/zaczyn:zaczyn-grow` |
 
-The flag loads that plugin for this terminal session. It does not configure a different app window. Check the four entries before testing behavior. If missing, verify the exact folder contains `.claude-plugin/plugin.json` and `core/`, then run:
+The flag loads that plugin for this terminal session. It does not configure a different app window. Check the five entries before testing behavior. If missing, verify the exact folder contains `.claude-plugin/plugin.json` and `core/`, then run:
 
 ```bash
-claude plugin validate /absolute/path/to/zaczyn-0.5.2
+claude plugin validate /absolute/path/to/zaczyn-0.6.0
 ```
 
 After repairing a package, exit and relaunch with the flag. A response that finds a different source checkout is not a successful plugin test. Persistent installations require their own host verification; session loading is the bounded testing path here. See the [plugin reference](https://code.claude.com/docs/en/plugins-reference).
@@ -31,7 +33,7 @@ After repairing a package, exit and relaunch with the flag. A response that find
 
 1. Open **Customize → Plugins** in Claude.
 2. Choose the upload option and select the native ZIP. Upload the whole ZIP; do not manually select its visible contents.
-3. Inspect the installed plugin and its four skills. Select your actual work folder, not a source checkout or extracted bundle.
+3. Inspect the installed plugin and its five skills. Select your actual work folder, not a source checkout or extracted bundle.
 4. Invoke setup from the available skills and describe the project, recurring work, or personal assistant you want to customize. Choose quick, guided, or deep.
 5. Confirm the assistant can read its shared resources and save your AGENTS/PROJECT context in the chosen folder. If a resource is unavailable, stop and diagnose the selected package instead of silently using another checkout.
 

@@ -1,6 +1,16 @@
 # What has been checked
 
-Updated 2026-09-10. Current edition: **0.5.2**. Source implementation, package integrity, actual host behavior, and beginner usability are separate claims.
+Updated 2026-10-24. Current edition: **0.6.0**. Source implementation, package integrity, actual host behavior, and beginner usability are separate claims.
+
+## Cost-aware orchestration: 0.6.0
+
+The five public skills ship in all six editions. The existing six offline packaging cases passed: declared entries and version consistency, complete compiled references, rejected missing/escaping links, independent skill copies, identical cross-host skill content, propagated source changes, inactive templates, and reproducible archives. The builder checks extracted files and local links, including the new host capability guide; release ZIPs have SHA-256 sidecars. Claude's plugin manifest validation passed. The separate skill-creator quick validator could not run because PyYAML was absent from both checked Python runtimes; no dependency was installed. The repository's own frontmatter and entry checks passed.
+
+One bounded behavioral check used an explicit read of the new skill in this Codex session, with a temporary workspace and no installation or other host session. A `gpt-6-sol` agent at high effort received a task to consolidate twelve batch notes into a readiness table, totals, and a follow-up plan. It made a brief routing decision, autonomously delegated extraction and report drafting to one `gpt-6-luna` worker at medium effort with fresh context, and checked all twelve source-to-report rows and totals deterministically. The report correctly identified six shippable batches and six needing action, including two missing owners, two blocked batches, and three pending validations with overlapping gaps. Earlier optimistic notes did not override current fields. The source notes were preserved. No user approval was requested for the worker. A subsequent unrelated grammar request returned only the corrected sentence without delegation or an orchestration procedure. This supports one task-boundary observation, not general discovery accuracy.
+
+This check did not measure prices, tokens, quota savings, or latency against a baseline. It did not exercise delegated planning, a separate cheaper reviewer, failed-worker escalation, unavailable delegation, manual handoff, or persistence across sessions. No benchmark series or fresh host installation was performed. Documented host mechanisms are not proof of this skill's runtime behavior in Claude Code, Kiro, Antigravity, Microsoft Copilot, or browser chat products; previous evidence below stays scoped to its original versions.
+
+After manual installation, check discovery and explicit invocation, autonomous model/effort selection where supported, a task with delegated planning and proportionate checking, and escalation after an inadequate result. In an environment without callable delegation, check truthful single-model fallback without a manual coordination requirement. Confirm the skill stays inactive for unrelated work, verify saved browser references in a fresh chat, and compare actual quality and usage on your own representative tasks before claiming savings.
 
 ## Claude Code project installation: 0.5.2
 

@@ -10,20 +10,20 @@ You do not need to know which skills or libraries to install. You explain your w
 
 ## Download, install, and start
 
-You need your AI app installed and working. Download the **0.5.2 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages.
+You need your AI app installed and working. Download the **0.6.0 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages.
 
 | App | Download | Installation guide | Verification |
 |---|---|---|---|
-| Claude Code (one project, desktop or terminal) | [Claude project ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-claude-project-0.5.2.zip) | [Project-only guide](adapters/claude-project/README.md) | Package checks; earlier plugin/setup evidence; desktop install unverified |
-| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-codex-0.5.2.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
-| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-antigravity-0.5.2.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
-| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.5.2/zaczyn-kiro-0.5.2.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
+| Claude Code (one project, desktop or terminal) | [Claude project ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-claude-project-0.6.0.zip) | [Project-only guide](adapters/claude-project/README.md) | Package checks; earlier plugin/setup evidence; desktop install unverified |
+| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-codex-0.6.0.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
+| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-antigravity-0.6.0.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
+| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-kiro-0.6.0.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
 
 1. **Download and extract.** Keep all files together. For an existing project folder named `XYZ`, rename the extracted folder `zaczyn-install` and copy it into `XYZ`. You should now have `XYZ/zaczyn-install/README.md` and `XYZ/zaczyn-install/skills/`.
-2. **Install for that project.** Open `XYZ` itself in your AI app as a local project and send: “Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start setup yet.” For Claude Code, this copies four complete skill folders to `XYZ/.claude/skills/`; Codex uses `XYZ/.agents/skills/`. The package's README provides the exact host-specific rules.
+2. **Install for that project.** Open `XYZ` itself in your AI app as a local project and send: “Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start setup yet.” For Claude Code, this copies five complete skill folders to `XYZ/.claude/skills/`; Codex uses `XYZ/.agents/skills/`. The package's README provides the exact host-specific rules.
 3. **Start setup.** Start a fresh local conversation in `XYZ`. In Claude Code, type `/zaczyn-setup` in the message box and select it. In Codex, use `$zaczyn-setup`. These are messages in your app, not terminal commands. Add the setup prompt below and choose quick, guided, or deep.
 
-This installation is scoped to `XYZ` and its relevant subdirectories. It does not install Zaczyn for your account or unrelated projects. Once the four complete skill folders are installed, `zaczyn-install` is no longer needed by the skills and can be moved out of your project. For terminal users who prefer plugins, the [Claude guide](adapters/claude/README.md) retains the alternative `--plugin-dir` path.
+This installation is scoped to `XYZ` and its relevant subdirectories. It does not install Zaczyn for your account or unrelated projects. Once the five complete skill folders are installed, `zaczyn-install` is no longer needed by the skills and can be moved out of your project. For terminal users who prefer plugins, the [Claude guide](adapters/claude/README.md) retains the alternative `--plugin-dir` path.
 
 First setup prompt:
 
@@ -31,7 +31,7 @@ First setup prompt:
 
 Your work stays in your own folder. Zaczyn saves `AGENTS.md` for working preferences and `PROJECT.md` for project facts; Claude Code also gets a `CLAUDE.md` pointer. Additional tools, templates, and procedures are added only when selected. Later, use work to plan or execute, review to assess a result, and grow to adjust your setup.
 
-[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.5.2) includes checksum files and the optional chat edition. Read the [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
+[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.6.0) includes checksum files and the optional chat edition. Fresh-install execution of the new orchestration skill in supported hosts remains unverified. Read the [host capability guide](adapters/orchestration.md) and [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
 
 ## Choose your depth
 
@@ -45,7 +45,7 @@ You can skip questions, stop, or deepen the setup later. An example task helps e
 
 A tester might choose an issue-report checklist; a founder might choose an interview-synthesis procedure; an analyst might choose source-reconciliation checks. Your actual work determines the recommendation. There is no compulsory profession pack or default tool stack.
 
-## Four intents
+## Five intents
 
 | Intent | Responsibility |
 |---|---|
@@ -53,8 +53,11 @@ A tester might choose an issue-report checklist; a founder might choose an inter
 | [Work](core/skills/zaczyn-work/SKILL.md) | Plan, execute, pause, resume, and organize work using your selected practices. |
 | [Review](core/skills/zaczyn-review/SKILL.md) | Check actual evidence, including artifacts with no prior task note. Review-only leaves the result unchanged. |
 | [Grow](core/skills/zaczyn-grow/SKILL.md) | Add, revise, or remove practices as your needs develop, with appropriate checks and undo guidance. |
+| [Orchestrate](core/skills/zaczyn-orchestrate/SKILL.md) | On an explicit cost-aware orchestration request, route bounded work through available agents or workflows and integrate the result. |
 
-These are intents, not four mandatory phases. Planning and archiving do not require extra skills. Normal completion includes review; a pause keeps unfinished work open. A quick job needs no task note.
+These are independent intents, not five mandatory phases. Orchestrate applies only when named or explicitly requested for cost-aware orchestration, and only for that task. Planning and archiving do not require extra skills. Normal completion includes review; a pause keeps unfinished work open. A quick job needs no task note.
+
+For example, select the strongest available model with high reasoning effort where your host offers it, then ask: “`$zaczyn-orchestrate` complete this task using cost-aware delegation” in Codex, or use `/zaczyn-orchestrate` in a Claude Code project (`/zaczyn:zaczyn-orchestrate` with the Claude plugin). The host's normal permissions still apply; there is no separate approval step for each agent.
 
 ## Your setup belongs to you
 

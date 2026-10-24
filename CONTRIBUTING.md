@@ -14,7 +14,7 @@ Formal packs, automatic tool catalogs, and a user-facing CLI are deferred. Prefe
 
 ## Ground rules
 
-Keep `core/` portable. Host syntax and installation belong in `adapters/`. Shipped defaults must remain separate from workspace customizations. Keep the four entry points short; load supporting references only when useful. Explain guidance in ordinary language and reuse existing domain workflows.
+Keep `core/` portable. Host syntax and installation belong in `adapters/`. Shipped defaults must remain separate from workspace customizations. Keep the five entry points short; load supporting references only when useful. Explain guidance in ordinary language and reuse existing domain workflows.
 
 Match verification to the change. A documentation edit needs a consistency check, not an agent benchmark. A behavior change needs a focused case with observable evidence and a case where it should not apply. Set a bounded scope before costly model runs; stop when the question is answered. Do not infer beginner usability from agent simulations or installation success from valid Markdown links.
 
@@ -29,13 +29,13 @@ python3 scripts/build_bundle.py
 The builder creates six reproducible editions and a `.zip.sha256` sidecar for each:
 
 - `dist/zaczyn-<VERSION>.zip`: native plugin and starter-folder fallback, with the hidden `.claude-plugin/` manifest, portable core, host guides, and examples.
-- `dist/zaczyn-claude-project-<VERSION>.zip`: four self-contained project skills for Claude Code desktop/local sessions, with project-only installation instructions.
-- `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, and `dist/zaczyn-kiro-<VERSION>.zip`: a host guide and four self-contained skill folders for workspace installation/import.
+- `dist/zaczyn-claude-project-<VERSION>.zip`: five self-contained project skills for Claude Code desktop/local sessions, with project-only installation instructions.
+- `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, and `dist/zaczyn-kiro-<VERSION>.zip`: a host guide and five self-contained skill folders for workspace installation/import.
 - `dist/zaczyn-chat-<VERSION>.zip`: complete `ZACZYN.md` reference compiled from that core, short project instructions, and chat-specific start/verification guidance.
 
 The GitHub workflow runs the offline checks, builds all editions, and verifies their checksums on pushes and pull requests. It does not call an AI model, install host software, or publish a release. Generated archives stay out of Git; attach the versioned ZIPs and checksum sidecars if you choose to publish a GitHub release.
 
-Edit `core/` and the relevant source under `adapters/`, then rebuild; do not maintain independent exported copies. The native exporter follows resource links, remaps the adapter index to `adapters/native/runtime.md`, and keeps the dependency closure inside each skill. Supporting entries become procedure.md; the AGENTS template is renamed so nested discovery cannot load it as real workspace instructions. Keep host-specific saving behavior in the chat runtime. The compiler converts resource links to internal anchors and rejects missing references. All archives exclude lab material, local settings, test outputs, and contributor tooling. The builder checks native metadata, four skill entries, resource links, extracted bytes, and compiled anchors outside the checkout.
+Edit `core/` and the relevant source under `adapters/`, then rebuild; do not maintain independent exported copies. The native exporter follows resource links, remaps the adapter index to `adapters/native/runtime.md`, and keeps the dependency closure inside each skill. Supporting entries become procedure.md; the AGENTS template is renamed so nested discovery cannot load it as real workspace instructions. Keep host-specific saving behavior in the chat runtime. The compiler converts resource links to internal anchors and rejects missing references. All archives exclude lab material, local settings, test outputs, and contributor tooling. The builder checks the declared public skill entries, native metadata, resource links, extracted bytes, and compiled anchors outside the checkout.
 
 Run the focused offline packaging checks after changing the builder:
 
