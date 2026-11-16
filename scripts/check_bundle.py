@@ -87,6 +87,16 @@ class Editions(unittest.TestCase):
                 expected = hashlib.sha256(first.read_bytes()).hexdigest()
                 self.assertEqual(first.with_suffix('.zip.sha256').read_text(encoding='utf-8'), expected+'  one.zip\n')
 
+    def test_host_probe_files_match_their_source(self):
+        import zipfile
+        import build_probe as probe
+        for name, data in probe.expected().items():
+            self.assertEqual((probe.PROBE/name).read_bytes(), data, name)
+        with zipfile.ZipFile(probe.PROBE/'zaczyn-probe.zip') as archive:
+            packed = {n: archive.read(n) for n in archive.namelist()}
+        self.assertEqual(packed, probe.skill_files())
+        self.assertIn('SKILL.md', packed)
+
     def test_broken_compiled_anchor_and_escaping_links_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
