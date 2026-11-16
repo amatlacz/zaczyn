@@ -1,118 +1,127 @@
 # Host probe
 
-A small diagnostic skill that shows how an app loads Agent Skills: whether it reads a skill at all, whether it opens the files packaged with it, and which folders it looks in.
+A small diagnostic skill that shows how an app loads Agent Skills: whether it accepts a skill at all, whether it opens the files packaged with it, and which folders it looks in.
 
 It is part of [Zaczyn](https://github.com/amatlacz/zaczyn), an open-source, MIT-licensed set of working practices for AI assistants. The probe exists to check which apps can run its skills.
 
-The skill itself only replies with a few fixed lines: it makes no network calls, reads no other data and changes nothing. Uploading it stores a copy in your Microsoft 365 storage, and step B4 separately asks Cowork to edit one test file. The clean-up section removes all of it.
+The skills only reply with a few fixed lines: they make no network calls, read no other data and change nothing. Uploading one stores a copy in your Microsoft 365 storage, and step C3 separately asks Cowork to edit one test file. The clean-up section removes all of it.
 
-The probe answers with fixed codewords. A codeword in the reply shows the app read that file; `CANNOT OPEN` or a missing line shows it did not.
+The replies contain fixed codewords. A codeword shows the app read that file; `CANNOT OPEN` or a missing line shows it did not.
 
 | Where the codeword is | Codeword |
 |---|---|
-| Skill body (`zaczyn-probe/SKILL.md`) | OWL-17 |
-| `zaczyn-probe/references/probe-detail.md` | LANTERN-42 |
-| `zaczyn-probe/assets/probe-template.md` | KETTLE-63 |
-| Single-file skill (`zaczyn-probe-single.md`) | MAPLE-08 |
+| Body of every `SKILL.md` | OWL-17 |
+| `references/probe-detail.md` | LANTERN-42 |
+| `assets/probe-template.md` | KETTLE-63 |
+| `zaczyn-probe-single.md` | MAPLE-08 |
 
 ## Get the files
 
 1. Open https://github.com/amatlacz/zaczyn and select **Code** → **Download ZIP**.
 2. Right-click the downloaded `zaczyn-main.zip` → **Extract All**. Open the extracted folder (it may contain another `zaczyn-main` folder) and find `probe`. Do not work from inside the ZIP.
 
-| File or folder | Used in |
+| File or folder | What it is |
 |---|---|
-| `zaczyn-probe.zip` | B1, B5: skill with companion files, `SKILL.md` at the archive root |
-| `zaczyn-probe-single.md` | B3, B4, B6: single-file skill |
-| `single-as-SKILL/SKILL.md` | B3: the same single file, named `SKILL.md` |
-| `probe-state.md` | B4: file for the write test |
-| `vscode-agents`, `vscode-github` | A1, A2: folders to open in VS Code |
+| `upload/1-basic/SKILL.md` | Smallest possible skill: one file, two header fields |
+| `upload/2-zip/zaczyn-probe-zip.zip` | The same smallest skill, packed in a ZIP |
+| `upload/3-reference/zaczyn-probe-ref.zip` | ZIP with the skill plus one file in `references/` |
+| `upload/4-full/zaczyn-probe.zip` | ZIP with `references/` and `assets/`, and extra header fields (`license`, `metadata`) |
+| `upload/5-single/zaczyn-probe-single.md` | Single-file skill under its own name, for the `/` file reference |
+| `vscode-github`, `vscode-agents` | Folders to open in VS Code |
+| `probe-state.md` | File for the Cowork write test |
 
-Do not unpack `zaczyn-probe.zip`; upload it as it is.
+Upload the `.zip` files as they are; do not unpack them. If your browser saved a file under a changed name, such as `zaczyn-probe (1).zip`, rename it back so your results match these instructions. Do not rename `SKILL.md`.
+
+Whenever an upload fails, write down the error message **word for word**. "Validation error" alone does not say which rule failed; the exact wording usually does.
 
 ## Part A: GitHub Copilot in Visual Studio Code
 
-Needs VS Code signed in to GitHub with a Copilot plan. Keyboard shortcuts: Windows first, macOS in brackets.
+Keyboard shortcuts: Windows first, macOS in brackets.
 
-**A1. Skills in `.agents/skills`.**
-1. **File** → **Open Folder** → select `probe/vscode-agents`. If VS Code asks whether you trust the authors, choose **Trust**: the folder holds only Markdown files, with no code, settings or extensions, and Restricted Mode turns agents off.
-2. Open the chat: **Ctrl+Alt+I** (⌃⌘I), or the **Chat** menu in the title bar → **Open Chat**.
-3. Select **+** (New Chat). Below the input box set **Session Target** to **Copilot** (not Claude, not Codex), the agent to **Agent** and the model to **Auto**. If there is no Session Target picker, note that and continue.
-4. Type only `/` in the input box. Note whether `zaczyn-probe` is in the list, and which other skills appear.
-5. Send `Run the Zaczyn probe` and record the reply.
+**A0. Check what the organisation allows (two minutes).**
+1. **Help** → **About**: note the version. Skills need 1.109 or later (1.108 only with the setting `chat.useAgentSkills` turned on).
+2. Open the Command Palette (**Ctrl+Shift+P**, ⇧⌘P) and run **Developer: Policy Diagnostics**. A report opens. Copy only these values into the results, not the whole report:
+   - the state under **Account Policy Gate**. `restricted` means AI features are limited until you sign in to Copilot with an account from an organisation your company has approved;
+   - the values of `ChatAgentMode`, `ChatStrictPluginOnlyCustomization` and `UpdateMode` in the **Applied Policy** table, or "not listed". `ChatStrictPluginOnlyCustomization` blocks skills stored in folders; `ChatAgentMode` set to off removes agent mode, and skills with it.
 
-The VS Code documentation does not say whether Copilot reads `.agents/skills`, so "not listed" is a valid result. Record it and continue with A2.
+**A1. Skills in `.github/skills`.**
+1. **File** → **Open Folder** → select `probe/vscode-github` itself, not its parent. In the Explorer the top name must be `vscode-github`, with `.github` directly inside. If VS Code asks whether you trust the authors, choose **Trust** if your organisation's rules allow it; you can first check in the Explorer that the folder contains only `.md` files.
+2. Look at the top of the window and the status bar for **Restricted Mode**. If it is shown, select **Manage** and trust this folder; in Restricted Mode agents and skills are off. Note whether it appeared.
+3. Open the chat: **Ctrl+Alt+I** (⌃⌘I), or the **Chat** menu in the title bar → **Open Chat**.
+4. Select **+** (New Chat). Always start a new chat after opening or trusting a folder; an older chat does not see new skills.
+5. Below the input box: set **Session Target** to **Copilot** if that picker exists, and the mode to **Agent**. Note whether **Agent** can be selected at all.
+6. Type only `/`. Note whether `zaczyn-probe` is in the list.
+7. Send `Run the Zaczyn probe` and record the reply.
+8. Command Palette → **Chat: Open Customizations** → **Skills**. Note whether `zaczyn-probe` is listed, from which folder, and any error shown.
 
-**A2. Skills in `.github/skills`.** Repeat A1 with `probe/vscode-github`.
+**A2. Skills in `.agents/skills`.** Repeat A1 with `probe/vscode-agents`. The VS Code documentation lists `.agents/skills` only for the Codex and the older Local session targets, not for Copilot, so "not listed" with Session Target = Copilot is the expected result. If Codex or Local can be selected as Session Target, try it too and note which target listed the skill.
 
-**A3. If the skill does not appear.** Open the Command Palette (**Ctrl+Shift+P**, ⇧⌘P) → **Chat: Open Customizations** → **Skills**. It lists every skill VS Code found, its folder and any error. Note what it shows and your Copilot plan (Free, Pro, Business, Enterprise).
+## Part B: Microsoft Copilot Chat (work account)
 
-## Part B: Microsoft Copilot (work or school account)
+Open https://copilot.cloud.microsoft in Edge or Chrome and sign in with the work account. Check your licence at https://myaccount.microsoft.com → **Subscriptions**: note whether **Microsoft 365 Copilot** is listed.
 
-Open https://copilot.cloud.microsoft in Edge or Chrome and sign in. The label next to your profile in the left pane must say **Work**. Microsoft is rolling out a new Home view, so the screen may differ slightly; in that view the Chat | Cowork switch sits in the input box.
+Upload path for every step below: **Agents** → **More agents** → arrow next to **Add** → **Upload skill**. Do not use an agent's **Configure** tab: that is Agent Builder, which has different rules. If **Upload skill** is not offered at all, record that and go to B5; it means skill upload is not enabled for your account.
 
-**B0. What is available.** Note whether there is a **Chat | Cowork** switch at the top. Cowork needs a Microsoft Copilot licence and is switched on by the organisation's administrator. Without it, skip to B5.
+Go in order. At the first upload that fails, skip the remaining uploads and go to B5; the failed step shows the cause.
 
-**B1. Cowork: upload the skill with companion files.**
-1. Select **Cowork**.
-2. In the left pane select **Customize** → **Skills** tab.
-3. Select the arrow next to **Add** → **Upload skill** → choose `zaczyn-probe.zip`. Cowork may remind you to upload only trusted skills; this one contains only the text you can read in `zaczyn-probe/`.
-4. Note whether it was accepted, or the exact error message.
+**B1. Smallest skill, single file.** Upload `upload/1-basic/SKILL.md`.
+- Accepted: in a new chat send `Run the basic Zaczyn probe` and record the reply. Continue with B2.
+- Rejected: even a minimal skill was refused, so the cause is most likely the account, licence or a tenant setting rather than the skill's content. Record the exact error and go to B5.
 
-**B2. Cowork: run it.**
-1. Start a new Cowork task and send `Run the Zaczyn probe`. Record the reply.
-2. Start another new task and type `/zaczyn-probe` without sending it. Note what the menu shows. If the skill is offered, select it, send `Run the Zaczyn probe` and record the reply.
+**B2. Smallest skill, as a ZIP.** Upload `upload/2-zip/zaczyn-probe-zip.zip`.
+- Accepted: send `Run the Zaczyn ZIP probe` and record the reply. Continue with B3.
+- Rejected after B1 was accepted: ZIP upload itself is the problem. Record the exact error and go to B5.
 
-**B3. Cowork: single-file skill.**
-1. As in B1, upload `zaczyn-probe-single.md`. If it is rejected, upload `single-as-SKILL/SKILL.md` instead.
-2. Start a new task and send `Run the single Zaczyn probe`. Record the reply. If it shows OWL-17 instead of MAPLE-08, the other skill answered; record that.
+**B3. ZIP with a packaged file.** Upload `upload/3-reference/zaczyn-probe-ref.zip`.
+- Accepted: send `Run the Zaczyn reference probe` and record the reply. Continue with B4.
+- Rejected after B2 was accepted: the `references/` folder is the problem. Record the exact error and go to B5.
 
-**B4. Cowork: write to OneDrive.**
-1. Open OneDrive (app launcher in the top-left corner → **OneDrive**). Create a folder `Zaczyn-probe` and upload `probe-state.md` and `zaczyn-probe-single.md` into it.
-2. Start a new Cowork task and send:
+**B4. Full skill.** Upload `upload/4-full/zaczyn-probe.zip`.
+- Accepted: send `Run the Zaczyn probe` and record the reply.
+- Rejected after B3 was accepted: the extra header fields or the `assets/` folder are the problem. Record the exact error.
 
-   ```
-   Open probe-state.md in my OneDrive folder Zaczyn-probe. Change "Current step: 1" to "Current step: 2", add the log line "- Edited by Cowork.", and save the file in place. Then tell me whether you overwrote it or saved a new file.
-   ```
+Check that each reply comes from the skill you just uploaded: B1 starts with `PROBE BASIC`, B2 with `PROBE ZIP`, B3 has `PROBE REFERENCE` but no `PROBE ASSET`, B4 has `PROBE ASSET`. If it does not, or has no PROBE lines, type `/`, select the right skill, send the same sentence again and record that reply too.
 
-3. Record the reply and what the folder shows afterwards: the same file changed, a new file next to it, a Word file instead of `.md`, or a refusal.
-
-**B5. Copilot Chat: personal skill.**
-1. Switch to **Chat**.
-2. Select **Agents** → **More agents** and check whether `zaczyn-probe` from B1 already appears among your skills. If it does, go to point 4.
-3. Select the arrow next to **Add** → **Upload skill**, choose `zaczyn-probe.zip` and save.
-4. In a new chat send `Run the Zaczyn probe` and record the reply. If no PROBE lines come back, type `/`, select `zaczyn-probe`, send the same sentence and record that reply too.
-
-**B6. Copilot Chat: file reference with `/`.**
-1. If you skipped B4, open OneDrive, create a folder `Zaczyn-probe` and upload `zaczyn-probe-single.md`. A new file can take a few minutes to appear in Copilot's file search.
+**B5. File reference with `/`.** This works without any skill upload.
+1. Open OneDrive (app launcher in the top-left corner → **OneDrive**), create a folder `Zaczyn-probe` and upload `upload/5-single/zaczyn-probe-single.md`. A new file can take a few minutes to appear in Copilot's file search.
 2. In a new chat type `/`, then `zaczyn-probe-single`, and look at the **Files** tab.
-3. If the file appears, select it and add `Read the referenced file in full and follow it.` Record the reply.
-4. Note whether the file could be selected at all.
+3. If the file appears, select it and add `Read the referenced file in full and follow it.` Record the reply. Note whether the file could be selected at all.
+
+## Part C: Copilot Cowork (only if your organisation has it)
+
+Cowork shows as a **Chat | Cowork** switch at the top of https://copilot.cloud.microsoft. It needs a Microsoft 365 Copilot licence and an administrator to switch it on. If the switch is missing, skip Part C.
+
+**C1. Upload.** Select **Cowork**, then **Customize** in the left pane → **Skills** tab → arrow next to **Add** → **Upload skill**. Upload `upload/4-full/zaczyn-probe.zip`, then `upload/5-single/zaczyn-probe-single.md`. Note which were accepted, with exact errors.
+
+**C2. Run.** In a new Cowork task send `Run the Zaczyn probe`; in another send `Run the single Zaczyn probe`. Record both replies.
+
+**C3. Write to OneDrive.** Upload `probe-state.md` into the `Zaczyn-probe` folder on OneDrive. In a new Cowork task send:
+
+```
+Open probe-state.md in my OneDrive folder Zaczyn-probe. Change "Current step: 1" to "Current step: 2", add the log line "- Edited by Cowork.", and save the file in place. Then tell me whether you overwrote it or saved a new file.
+```
+
+Record the reply and what the folder shows afterwards: the same file changed, a new file next to it, a Word file instead of `.md`, or a refusal.
 
 ## Clean up
 
-- Cowork: **Customize** → **Skills**, remove `zaczyn-probe`, `zaczyn-probe-single` and any numbered copies such as `zaczyn-probe-2`.
-- Chat: **Agents** → **More agents**, remove `zaczyn-probe` and any numbered copies.
-- OneDrive: delete the `Zaczyn-probe` folder. Then open **My files** → **Documents** → **Cowork** → **skills** and delete the items whose names start with `zaczyn-probe`.
+- Chat: **Agents** → **More agents**, remove every skill whose name starts with `zaczyn-probe`.
+- Cowork: **Customize** → **Skills**, remove every skill whose name starts with `zaczyn-probe`.
+- OneDrive: delete the `Zaczyn-probe` folder. If you used Cowork, also open **My files** → **Documents** → **Cowork** → **skills** and delete the items whose names start with `zaczyn-probe`.
 
 ## Results
 
 ```
-A1 Session Target picker: yes/no | listed: yes/no | other skills: | reply:
-A2 Session Target picker: yes/no | listed: yes/no | other skills: | reply:
-A3 (only if needed):
-Copilot plan:
-B0 Cowork switch: yes/no
-B1 upload: accepted / error:
-B2 reply: | "/zaczyn-probe" menu showed: | reply after selecting:
-B3 upload (.md / SKILL.md): | reply:
-B4 reply: | folder shows:
-B5 already listed: yes/no | reply: | reply after selecting with /:
-B6 file selectable: yes/no | reply:
+A0 version: | Account Policy Gate: | ChatAgentMode / ChatStrictPluginOnlyCustomization / UpdateMode (or "not listed"):
+A1 Restricted Mode shown: yes/no | Agent selectable: yes/no | "/" lists zaczyn-probe: yes/no | Customizations shows: | reply:
+A2 "/" lists zaczyn-probe: yes/no | other targets tried: | reply:
+B  Microsoft 365 Copilot licence listed: yes/no | Upload skill offered: yes/no
+B1 accepted / exact error: | reply:
+B2 accepted / exact error: | reply:
+B3 accepted / exact error: | reply:
+B4 accepted / exact error: | reply:
+B5 file selectable: yes/no | reply:
+C  Cowork switch: yes/no | C1: | C2: | C3:
 ```
 
-## Maintainers
-
-Edit only `zaczyn-probe/` and `zaczyn-probe-single.md`, then run `python3 scripts/build_probe.py`. `scripts/check_bundle.py` fails if the derived files or the ZIP differ from their source.
-
-Sources: [Cowork skills](https://learn.microsoft.com/en-us/copilot/cowork/cowork-customize), [Copilot Chat skills](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills), [file references](https://support.microsoft.com/en-us/microsoft-365-copilot/refer-to-specific-files-and-more-in-microsoft-365-copilot), [VS Code agent skills](https://code.visualstudio.com/docs/agent-customization/agent-skills), [VS Code agent harnesses](https://code.visualstudio.com/docs/agents/run/agent-harnesses).
+Sources: [Copilot Chat skills](https://learn.microsoft.com/en-us/microsoft-365/copilot/extensibility/build-copilot-chat-skills), [Cowork skills](https://learn.microsoft.com/en-us/copilot/cowork/cowork-customize), [file references](https://support.microsoft.com/en-us/microsoft-365-copilot/refer-to-specific-files-and-more-in-microsoft-365-copilot), [VS Code agent skills](https://code.visualstudio.com/docs/agent-customization/agent-skills), [VS Code enterprise policies](https://code.visualstudio.com/docs/enterprise/policies), [workspace trust](https://code.visualstudio.com/docs/editing/workspaces/workspace-trust).

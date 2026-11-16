@@ -88,14 +88,27 @@ class Editions(unittest.TestCase):
                 self.assertEqual(first.with_suffix('.zip.sha256').read_text(encoding='utf-8'), expected+'  one.zip\n')
 
     def test_host_probe_files_match_their_source(self):
+        import re
         import zipfile
         import build_probe as probe
-        for name, data in probe.expected().items():
+        expected = probe.expected()
+        on_disk = {p.relative_to(probe.PROBE).as_posix() for folder in probe.DERIVED
+                   for p in (probe.PROBE/folder).rglob('*') if p.is_file()}
+        self.assertEqual(on_disk, set(expected))
+        for name, data in expected.items():
             self.assertEqual((probe.PROBE/name).read_bytes(), data, name)
-        with zipfile.ZipFile(probe.PROBE/'zaczyn-probe.zip') as archive:
-            packed = {n: archive.read(n) for n in archive.namelist()}
-        self.assertEqual(packed, probe.skill_files())
-        self.assertIn('SKILL.md', packed)
+        for skill in probe.SKILLS:
+            header = (probe.PROBE/skill/'SKILL.md').read_text(encoding='utf-8').split('---')[1]
+            self.assertRegex(header, r'(?m)^name: %s$' % skill)
+            self.assertLessEqual(len(re.search(r'(?m)^description: (.+)$', header).group(1)), 1024)
+        for name in expected:
+            if name.endswith('.zip'):
+                with zipfile.ZipFile(probe.PROBE/name) as archive:
+                    files = {i.filename: archive.read(i) for i in archive.infolist() if not i.is_dir()}
+                    self.assertTrue(all(i.external_attr >> 16 & 0o170000 in (0o100000, 0o040000)
+                                        for i in archive.infolist()))
+                self.assertIn('SKILL.md', files)
+                self.assertEqual(Path(name).stem, re.search(r'(?m)^name: (.+)$', files['SKILL.md'].decode()).group(1))
 
     def test_broken_compiled_anchor_and_escaping_links_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -1,13 +1,13 @@
 ---
 name: zaczyn-probe-single
-description: Single-file diagnostic probe that shows how this app reads one skill file. Use only when the user asks to run the single Zaczyn probe, types zaczyn-probe-single, or attaches or references this file and asks to follow it. Reply with the fixed report lines below and nothing else. Not for real work, advice, documents or edits.
+description: Single-file diagnostic probe that shows how this app reads one skill file. Use when the user asks to run the single Zaczyn probe, types zaczyn-probe-single, or attaches or references this file and asks to follow it. Replies with a short fixed report. Not for real work, advice, documents or edits.
 ---
 
 # Zaczyn single-file probe
 
-This file is a test. Do not do any other work while it runs.
+This file is a diagnostic test of how the app reads a skill file.
 
-Reply with exactly these three lines, filled in, and nothing else:
+Reply with these three lines, filled in:
 
 ```
 PROBE SINGLE: MAPLE-08

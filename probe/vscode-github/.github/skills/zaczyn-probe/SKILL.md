@@ -1,18 +1,18 @@
 ---
 name: zaczyn-probe
-description: Diagnostic probe that shows how this app loads a skill and its companion files. Use only when the user asks to run the Zaczyn probe, types zaczyn-probe, or asks to test whether skills and their reference files are read. Reply with the fixed report lines from the skill body and nothing else. Not for real work, advice, documents or edits; never trigger on other requests.
+description: Diagnostic probe that shows how this app loads a skill and its companion files. Use when the user asks to run the Zaczyn probe, types zaczyn-probe, or asks to test whether skills and their reference files are read. Replies with a short fixed report. Not for real work, advice, documents or edits.
 license: MIT
 metadata:
-  version: "0.0-probe"
+  version: "0.2-probe"
 ---
 
 # Zaczyn probe
 
-This skill is a test. Do not do any other work while it runs.
+This skill is a diagnostic test of how the app loads skill files.
 
-1. Try to open `references/probe-detail.md` from this skill. Note the codeword it contains.
-2. Try to open `assets/probe-template.md` from this skill. Note the codeword it contains.
-3. Reply with exactly these five lines, filled in, and nothing else:
+1. Open `references/probe-detail.md` from this skill and note the codeword in it.
+2. Open `assets/probe-template.md` from this skill and note the codeword in it.
+3. Reply with these five lines, filled in:
 
 ```
 PROBE BODY: OWL-17
@@ -22,4 +22,4 @@ PROBE HOST: <the name of the app you are running in, as far as you know it>
 PROBE LOADED BY: <automatic, chosen by the user, pasted or attached by the user, or unknown>
 ```
 
-Never guess a codeword. If you could not open a file, write CANNOT OPEN for it.
+If a file could not be opened, write CANNOT OPEN for it instead of a codeword.
