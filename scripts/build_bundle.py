@@ -13,7 +13,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_SKILLS = ('zaczyn-setup', 'zaczyn-work', 'zaczyn-review', 'zaczyn-grow', 'zaczyn-orchestrate')
 EXPECTED = set(PUBLIC_SKILLS)
-HOSTS = ('claude-project', 'codex', 'antigravity', 'kiro')
+HOSTS = ('claude-project', 'codex', 'antigravity', 'kiro', 'vscode-copilot')
 # Skills shipped as one self-contained file for apps that cannot install a folder.
 SINGLE_SKILLS = ('zaczyn-setup', 'zaczyn-work', 'zaczyn-review', 'zaczyn-grow')
 # Characters, measured without the build stamp. Microsoft recommends keeping a Copilot Chat SKILL.md under

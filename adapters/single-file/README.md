@@ -1,6 +1,6 @@
 # Single-file skills
 
-Use the **single-file edition** (`zaczyn-single-0.6.0.zip`) when your app cannot install a skill folder: a browser assistant, an office assistant that accepts one uploaded file, or any chat where you can attach, reference, or paste a document. Each `zaczyn-<skill>.md` holds one skill with everything it needs. Setup, work, review, and grow are included; orchestrate is not, because it needs an app that can start other agents.
+Use the **single-file edition** (`zaczyn-single-<version>.zip`, attached to the next release) when your app cannot install a skill folder: a browser assistant, an office assistant that accepts one uploaded file, or any chat where you can attach, reference, or paste a document. Each `zaczyn-<skill>.md` holds one skill with everything it needs. Setup, work, review, and grow are included; orchestrate is not, because it needs an app that can start other agents.
 
 Pick the first way your app allows:
 

@@ -4,20 +4,22 @@
 
 **Build a way of working with AI that fits you. Start small, and grow it at your pace.**
 
-Zaczyn is a starter for native AI agent workspaces, targeting Claude Code, Codex, Antigravity, and Kiro. It helps you set up a project, recurring professional workflow, or personal assistant. It asks useful questions, suggests possibilities you may not know to request, and helps turn your choices into working context, practices, and tools.
+Zaczyn is a starter for AI agent workspaces, targeting Claude Code, Codex, Antigravity, and Kiro, with drafts for GitHub Copilot in VS Code and, through single-file skills, Microsoft Copilot and other browser assistants. It helps you set up a project, recurring professional workflow, or personal assistant. It asks useful questions, suggests possibilities you may not know to request, and helps turn your choices into working context, practices, and tools.
 
 You do not need to know which skills or libraries to install. You explain your work; Zaczyn helps you explore the options and decide how far to go. Like a sourdough starter, the base stays small while what you make with it can grow.
 
 ## Download, install, and start
 
-You need your AI app installed and working. Download the **0.6.0 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages.
+You need your AI app installed and working. Download the **0.6.0 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages (the only exception is the optional [host probe](probe/README.md), which says when to use it).
 
-| App | Download | Installation guide | Verification |
+| App | Download | Installation guide | How well tested |
 |---|---|---|---|
 | Claude Code (one project, desktop or terminal) | [Claude project ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-claude-project-0.6.0.zip) | [Project-only guide](adapters/claude-project/README.md) | Package checks; earlier plugin/setup evidence; desktop install unverified |
 | Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-codex-0.6.0.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
 | Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-antigravity-0.6.0.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
 | Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-kiro-0.6.0.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
+| GitHub Copilot in VS Code | With the next release | [VS Code guide](adapters/vscode-copilot/README.md) | Draft; not yet confirmed |
+| Microsoft Copilot (Cowork, Chat) and other browser assistants | With the next release (single-file edition) | [Microsoft 365 guide](adapters/microsoft-365/README.md), [single-file guide](adapters/single-file/README.md) | Draft; not yet confirmed |
 
 1. **Download and extract.** Keep all files together. For an existing project folder named `XYZ`, rename the extracted folder `zaczyn-install` and copy it into `XYZ`. You should now have `XYZ/zaczyn-install/README.md` and `XYZ/zaczyn-install/skills/`.
 2. **Install for that project.** Open `XYZ` itself in your AI app as a local project and send: “Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start setup yet.” For Claude Code, this copies five complete skill folders to `XYZ/.claude/skills/`; Codex uses `XYZ/.agents/skills/`. The package's README provides the exact host-specific rules.

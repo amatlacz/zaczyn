@@ -2,6 +2,14 @@
 
 Updated 2026-11-18. Current released edition: **0.6.0**; unreleased source changes are listed first. Source implementation, package integrity, actual host behavior, and beginner usability are separate claims.
 
+## Unreleased: drafts for GitHub Copilot and Microsoft Copilot (2026-11-18)
+
+Two draft guides were added from vendor documentation, without a successful run: [GitHub Copilot in VS Code](https://github.com/amatlacz/zaczyn/blob/main/adapters/vscode-copilot/README.md), shipped as a new `zaczyn-vscode-copilot-<version>.zip` workspace edition with the same skill bytes as the others, and [Microsoft Copilot](https://github.com/amatlacz/zaczyn/blob/main/adapters/microsoft-365/README.md) (Cowork, Copilot Chat, or a referenced file), using the single-file edition. The native runtime gained a GitHub Copilot section; the adapter index gained a table of the folders each app reads, so older copies can be found before installing; the orchestration guide no longer recommends putting the chat reference into Agent Builder knowledge and warns against putting personal context into an agent other people use. “Cowork” in Zaczyn's documents now says Claude Cowork or Microsoft's Copilot Cowork explicitly.
+
+Three independent model reviews checked the guides against current Microsoft, VS Code, and GitHub pages and as a first-time, non-technical reader. Their findings were applied: Cowork's renamed **Plugins** page and OneDrive skills folder, the full Cowork prerequisites, what Copilot Chat and Cowork can and cannot save, documented Cowork sharing, mobile limits, the Chat automatic-use toggle, Information Barriers and the 20,000-character recommendation as possible causes of an upload error, VS Code version and approval labels, Copilot's instruction files, the folders each harness reads, package names that do not exist until the next release, contradictory install instructions, and unexplained terms.
+
+The only real-host evidence remains the probe run on a company-managed computer recorded in the maintainer's notes: no workspace skills appeared in VS Code (cause not established), Cowork was switched off, and a Copilot Chat skill upload returned a validation error whose cause is not yet known. Both guides say so.
+
 ## Unreleased: clean local installation (2026-11-18)
 
 Before these checks the maintainer's machine held older copies that could have been loaded instead of the new build: five 0.6.0 folders in `~/.agents/skills`, five links to them in `~/.claude/skills`, and an extracted 0.3.0 bundle. They were moved to the Trash. Copies kept in other private repositories were replaced with this build or, in one participant starter repository, left unchanged; the clean-folder checks below do not read them.
