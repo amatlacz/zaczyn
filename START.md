@@ -47,7 +47,7 @@ In native workspaces, keep these files in your selected work folder. Host-specif
 
 ## Explicit-read fallback
 
-If a file-capable host cannot load a native plugin, keep the extracted native bundle together and explicitly ask it to read `core/skills/zaczyn-setup/SKILL.md` and linked conventions under that bundle path. Identify your separate work folder. Move the whole extracted folder, including hidden `.claude-plugin/`, rather than copying only visible files. Do not claim plugin installation when using explicit reads.
+If a file-capable host cannot load a native plugin, keep the extracted native bundle together and explicitly ask it to read `core/skills/zaczyn-setup/SKILL.md` and linked conventions under that bundle path. Identify your separate work folder. Move the whole extracted folder, including hidden `.claude-plugin/`, rather than copying only visible files. Do not claim plugin installation when using explicit reads. To see what your app actually loads, use [this three-question check](docs/field-guide/check-your-app.md).
 
 ## Optional graphical and chat editions
 
