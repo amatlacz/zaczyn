@@ -1,6 +1,6 @@
 # Chat-project runtime
 
-This edition runs the same setup/work/review/grow/orchestrate procedures through ordinary conversation and uploaded reference material. The numbered source sections below are bundled references, not files already present in the user's project. Follow the core's intent and decision boundaries; apply these environment-specific saving and invocation rules when local workspace capabilities are absent.
+This edition runs the same setup/work/review/grow/orchestrate procedures through ordinary conversation and uploaded reference material. The sections below are bundled references, not files already present in the user's project. Follow the core's intent and decision boundaries; apply these environment-specific saving and invocation rules when local workspace capabilities are absent.
 
 ## Find the intent and reference
 
