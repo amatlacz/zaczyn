@@ -26,11 +26,11 @@ From the source checkout, with Python 3.9 or newer:
 python3 scripts/build_bundle.py
 ```
 
-The builder creates eight reproducible editions, a `.zip.sha256` sidecar for each, and `dist/catalog.json` listing the skills and archives:
+The builder creates nine reproducible editions, a `.zip.sha256` sidecar for each, and `dist/catalog.json` listing the skills and archives:
 
 - `dist/zaczyn-<VERSION>.zip`: native plugin and starter-folder fallback, with the hidden `.claude-plugin/` manifest, portable core, host guides, and examples.
 - `dist/zaczyn-claude-project-<VERSION>.zip`: five self-contained project skills for Claude Code desktop/local sessions, with project-only installation instructions.
-- `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, and `dist/zaczyn-kiro-<VERSION>.zip`: a host guide and five self-contained skill folders for workspace installation/import.
+- `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, `dist/zaczyn-kiro-<VERSION>.zip`, and `dist/zaczyn-vscode-copilot-<VERSION>.zip`: a host guide and five self-contained skill folders for workspace installation/import.
 - `dist/zaczyn-chat-<VERSION>.zip`: complete `ZACZYN.md` reference compiled from that core, short project instructions, and chat-specific start/verification guidance.
 - `dist/zaczyn-single-<VERSION>.zip`: setup, work, review, and grow as one self-contained Markdown skill file each, for apps that accept a single uploaded, attached, or pasted file.
 - `dist/zaczyn-library-<VERSION>.zip`: the optional standalone skills from `library/`, read separately so the core editions never change because of them.

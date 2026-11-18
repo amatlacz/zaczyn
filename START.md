@@ -1,6 +1,6 @@
 # Start with Zaczyn
 
-Zaczyn runs in a native agent working with your project folder. Choose the package for the app you use. You can leave the extracted download in Downloads; the host guide explains which five folders to install in your work project.
+Zaczyn runs in an AI app that can follow a skill: usually an assistant that works with the files in a folder on your computer, or, through single files, a browser or office assistant. Choose the package for the app you use. Each guide below tells you where to put the extracted folder; for Claude Code, Codex, and VS Code you copy it into your work folder as `zaczyn-install`.
 
 | App | Package and instructions |
 |---|---|
@@ -8,10 +8,13 @@ Zaczyn runs in a native agent working with your project folder. Choose the packa
 | Codex | `zaczyn-codex-0.6.0.zip`; [Codex guide](adapters/codex/README.md) |
 | Antigravity (experimental) | `zaczyn-antigravity-0.6.0.zip`; [Antigravity guide](adapters/antigravity/README.md) |
 | Kiro (experimental) | `zaczyn-kiro-0.6.0.zip`; [Kiro guide](adapters/kiro/README.md) |
+| GitHub Copilot in VS Code (draft) | package arrives with the next release; [VS Code guide](adapters/vscode-copilot/README.md) |
+| Microsoft Copilot, Cowork or Chat (draft) | single-file edition, arrives with the next release; [Microsoft 365 guide](adapters/microsoft-365/README.md) |
+| Any app that reads one file | single-file edition, arrives with the next release; [single-file guide](adapters/single-file/README.md) |
 
 Download the prepared ZIP from the [0.6.0 release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.6.0). Choose the named app package above, not GitHub's automatically generated source-code archive. Ordinary users do not need to clone or build the repository. You need the selected AI app installed and working before installation.
 
-## Claude Code — one project, no terminal required
+## Claude Code — one project, no terminal required (desktop installation not yet independently verified; see [verification](docs/verification.md))
 
 For an existing folder `XYZ`, download `zaczyn-claude-project-0.6.0.zip`. Extract it, rename the extracted folder `zaczyn-install`, and copy it into XYZ. Open XYZ itself as a local project in Claude Code's desktop app and send:
 
@@ -51,7 +54,7 @@ If a file-capable host cannot load a native plugin, keep the extracted native bu
 
 ## Optional graphical and chat editions
 
-Cowork plugin upload is described in the [Claude guide](adapters/claude/README.md). The optional `zaczyn-chat-0.6.0.zip` uses uploaded references and project instructions; see the [chat guide](adapters/chatgpt/README.md). These paths are separate from native agent installation and are not required for it.
+Claude Cowork plugin upload (Anthropic's desktop app) is described in the [Claude guide](adapters/claude/README.md); for Microsoft's Copilot Cowork see the [Microsoft 365 guide](adapters/microsoft-365/README.md). The optional `zaczyn-chat-0.6.0.zip` uses uploaded references and project instructions; see the [chat guide](adapters/chatgpt/README.md). These paths are separate from native agent installation and are not required for it.
 
 If no usable file access or project sources exist, paste the chat edition's project instructions and relevant reference sections, then keep the generated context documents yourself. Continuation requires providing them again. No automatic persistence is promised.
 
