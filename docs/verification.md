@@ -2,6 +2,17 @@
 
 Updated 2026-11-18. Current released edition: **0.6.0**; unreleased source changes are listed first. Source implementation, package integrity, actual host behavior, and beginner usability are separate claims.
 
+## Unreleased: clean local installation (2026-11-18)
+
+Before these checks the maintainer's machine held older copies that could have been loaded instead of the new build: five 0.6.0 folders in `~/.agents/skills`, five links to them in `~/.claude/skills`, and an extracted 0.3.0 bundle. They were moved to the Trash. Copies kept in other private repositories were replaced with this build or, in one participant starter repository, left unchanged; the clean-folder checks below do not read them.
+
+The build from main `392f0e1` stamped every skill's VERSION as `0.6.0+g392f0e16a5fb`.
+
+- **Codex CLI 0.169.0-alpha.11.1, discovery passed.** In a new Git folder outside every repository, with the Codex workspace edition in `.agents/skills` and a temporary `CODEX_HOME`, an app-server `skills/list` request with a forced reload returned exactly the five Zaczyn skills, enabled, with repository scope, loaded from that folder's paths, and no errors. No model turn was started.
+- **Claude Code 2.1.300, discovery passed; invocation not run.** In a second clean folder with the Claude project edition in `.claude/skills`, a headless session's start-up listed the five skills without a plugin namespace. The model turn then failed because the terminal sign-in had expired; no invocation of this build was observed there.
+- **Maintainer's desktop session, invocation passed.** After the replacement in a private workspace, a running Claude Code desktop session picked up the new skill descriptions and loaded zaczyn-review from that workspace's `.claude/skills/zaczyn-review`, with the new text and flattened reference link.
+- **Not checked:** Antigravity and Kiro (no command-line tool available), the single-file and library editions in any real host, and any Microsoft or GitHub Copilot environment.
+
 ## Unreleased: optional library (2026-11-18)
 
 A new `library/` holds optional skills, one self-contained `SKILL.md` each, without the `zaczyn-` prefix and independent of the base: notes-to-brief (sources sorted into stated, decision, action, assumption, open question, and contradiction, each with a pointer), test-charter (Hendrickson's mission form, risks, two to four ideas with oracles for the top three risks, or numbered checks), and release-readiness-note (results labelled observed or reported and tied to a build; the decision left to its owner). They ship as `zaczyn-library-<version>.zip`; the core editions do not read `library/`. The former deferred pack stubs are removed. New field-guide pages cover a first own skill with a cold test and team inventory, a blank skill template, context hygiene, and a three-question check of what an app actually loads.
