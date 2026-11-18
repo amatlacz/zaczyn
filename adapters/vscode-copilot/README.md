@@ -2,7 +2,7 @@
 
 Status: a draft written from the VS Code and GitHub documentation of November 2026, **not yet confirmed in a working installation**. In one test on a company-managed computer no workspace skills appeared at all; the cause (organisation policy, version, or trust) was not established. If you try it, tell us what happened in a [GitHub issue](https://github.com/amatlacz/zaczyn/issues). The optional [host probe](https://github.com/amatlacz/zaczyn/tree/main/probe) is a short test; its VS Code part needs some familiarity with settings.
 
-This package (`zaczyn-vscode-copilot-<version>.zip`, attached to the next release on the [releases page](https://github.com/amatlacz/zaczyn/releases)) contains the five skills in `skills/`. It works for documents and notes as well as code: VS Code is the editor, Copilot the assistant.
+This package (`zaczyn-vscode-copilot-0.7.0.zip`, from the [0.7.0 release](https://github.com/amatlacz/zaczyn/releases/tag/v0.7.0)) contains the five skills in `skills/`. It works for documents and notes as well as code: VS Code is the editor, Copilot the assistant.
 
 ## Before you start
 

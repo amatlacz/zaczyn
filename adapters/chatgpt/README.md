@@ -1,6 +1,6 @@
 # ChatGPT project edition
 
-Use the **chat edition** (`zaczyn-chat-0.6.0.zip`). It contains a reference generated from the same core as the native bundle. It uses ordinary requests, project instructions, and uploaded documents; no terminal or native skill command is required.
+Use the **chat edition** (`zaczyn-chat-0.7.0.zip`). It contains a reference generated from the same core as the native bundle. It uses ordinary requests, project instructions, and uploaded documents; no terminal or native skill command is required.
 
 ## Start in the app
 

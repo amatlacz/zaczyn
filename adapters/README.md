@@ -2,12 +2,12 @@
 
 Zaczyn runs where an assistant can follow a skill: native agent workspaces (Claude Code, Codex, Antigravity, Kiro, GitHub Copilot in VS Code) and, through single files, browser and office assistants such as Microsoft Copilot. One portable core defines behavior; each host needs an adapter for instruction loading, skill discovery, shared references, and file access.
 
-- **Claude Code:** install `zaczyn-claude-project-0.6.0.zip` into one project through the [project-only guide](claude-project/README.md), including desktop sessions without a terminal. The [Claude guide](claude/README.md) retains an optional terminal plugin path. See [verification](../docs/verification.md) for what has been observed.
-- **Codex:** use `zaczyn-codex-0.6.0.zip` and the [native workspace guide](codex/README.md). Discovery of the current build was observed in a clean folder.
-- **Antigravity (experimental):** use `zaczyn-antigravity-0.6.0.zip` and the [native guide](antigravity/README.md). Actual host behavior is unverified.
-- **Kiro (experimental):** use `zaczyn-kiro-0.6.0.zip` and the [native guide](kiro/README.md). Actual host behavior is unverified.
-- **GitHub Copilot in VS Code (draft):** the package arrives with the next release; see the [VS Code guide](vscode-copilot/README.md). Not yet confirmed in a working installation.
-- **Microsoft Copilot, Cowork and Chat (draft):** the single-file edition arrives with the next release; see the [Microsoft 365 guide](microsoft-365/README.md). Not yet confirmed in a working setup.
+- **Claude Code:** install `zaczyn-claude-project-0.7.0.zip` into one project through the [project-only guide](claude-project/README.md), including desktop sessions without a terminal. The [Claude guide](claude/README.md) retains an optional terminal plugin path. See [verification](../docs/verification.md) for what has been observed.
+- **Codex:** use `zaczyn-codex-0.7.0.zip` and the [native workspace guide](codex/README.md). Discovery of the current build was observed in a clean folder.
+- **Antigravity (experimental):** use `zaczyn-antigravity-0.7.0.zip` and the [native guide](antigravity/README.md). Actual host behavior is unverified.
+- **Kiro (experimental):** use `zaczyn-kiro-0.7.0.zip` and the [native guide](kiro/README.md). Actual host behavior is unverified.
+- **GitHub Copilot in VS Code (draft):** use `zaczyn-vscode-copilot-0.7.0.zip` and the [VS Code guide](vscode-copilot/README.md). Not yet confirmed in a working installation.
+- **Microsoft Copilot, Cowork and Chat (draft):** use `zaczyn-single-0.7.0.zip` and the [Microsoft 365 guide](microsoft-365/README.md). Not yet confirmed in a working setup.
 - **Any other app that reads one file:** the [single-file edition](single-file/README.md).
 
 The exported skill files are identical across the workspace packages; only their guides differ. Each skill carries what it needs; installing one exported folder does not depend on another skill or the source checkout. Keep all five at the same version when updating.
