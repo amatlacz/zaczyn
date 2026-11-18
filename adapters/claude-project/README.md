@@ -12,7 +12,9 @@ Use `zaczyn-claude-project-0.6.0.zip`. This package installs five skills in one 
 
 4. When installation finishes, start a fresh local conversation in `XYZ`. Type `/zaczyn-setup` in Claude's message box, select that skill, and add:
 
-> Help me customize this project. Show me quick, guided, and deep setup options before doing any project work.
+> Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.
+
+For more questions and suggestions, ask for a guided or deep setup instead.
 
 The slash command is a message to Claude, not a terminal command. Later, use `/zaczyn-orchestrate` for an explicit cost-aware orchestration task; see the [host capability guide](../orchestration.md). If it is absent from the available skills, restart the app and reopen `XYZ`; report the missing entry rather than using a different checkout.
 

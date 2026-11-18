@@ -18,7 +18,7 @@ If you prefer manual copying, copy those five folders to that same destination u
 
 Open a fresh conversation in that workspace after installation; restart the app if discovery does not refresh. Use `$zaczyn-setup` (or select it from the host’s skills menu). You can also ask for zaczyn-setup by name.
 
-Say: “Help me customize this workspace for my work. Show me quick, guided, and deep options before we start a task.” Choose a depth, discuss your needs, and accept only additions you want. Setup should save your preferences and facts in the work project.
+Say: “Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.” For more questions and suggestions, ask for a guided or deep setup instead. Accept only additions you want. Setup should save your preferences and facts in the work project.
 
 Codex reads workspace AGENTS.md; it points to PROJECT.md. Do not create CLAUDE.md or another host wrapper. If AGENTS.override.md or closer instructions exist, respect their precedence.
 

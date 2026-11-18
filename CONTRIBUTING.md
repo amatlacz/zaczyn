@@ -5,7 +5,7 @@ Help people complete useful work and develop a process they can understand and m
 ## Useful contributions
 
 - Real examples of friction: the request, available material, result, and where help was needed.
-- Small working patterns that apply to a concrete need without imposing a profession or folder tree.
+- Small working guidance for the relevant skill or reference that applies to a concrete need without imposing a profession or folder tree.
 - Scoped improvements to setup, work, review, or grow, supported by an inspectable example.
 - Host adapters with actual installation, resource-access, and context-loading evidence.
 - Short examples showing when to keep a prompt, add a rule or template, or retire process.

@@ -1,10 +1,6 @@
 # Discovery at the user's chosen depth
 
-A project, professional workflow, and personal assistant have different scope. Learn what the user wants help with and where the context should apply before suggesting structure. Their profession is a clue for useful questions, not a template assignment. If they already have an organized workspace, ask what they want to change rather than starting over.
-
-## Quick
-
-Aim for a short exchange: what kind of help they want, the recurring or immediate outcome, and what material/tools already exist. Combine missing essentials into a few plain-language questions; reuse supplied answers. Offer one or two useful possibilities and recommend a small starting setup. The user can decline both. Save the known project context and working instructions, explain the next action, and let them start work or stop. Two minutes is an aspiration for a simple case, not an installation-time guarantee.
+This guidance is for guided and deep setup; quick setup follows the setup skill's step 2. A project, professional workflow, and personal assistant have different scope. Learn what the user wants help with and where the context should apply before suggesting structure. Their profession is a clue for useful questions, not a template assignment. If they already have an organized workspace, ask what they want to change rather than starting over.
 
 ## Guided
 
@@ -15,8 +11,6 @@ Explore the areas that change the proposed setup, in small conversational groups
 - Material: source documents, examples of good/bad outputs, current project facts, and what information remains unavailable.
 - Collaboration preferences: language, explanation depth, initiative, review decisions, and where they want to stay involved.
 - Possibilities: a few concrete practices, skills, or tools tied to the work just described, with a recommendation and an option to keep things simpler.
-
-For example, a tester might explore exploratory testing and issue reports; a founder might explore customer interviews and recurring updates; an analyst might explore reconciling source data and checking report claims. These examples are prompts for discovery, not prescribed stacks or substitutes for the user's domain standards. A person can combine several kinds of work.
 
 ## Deep
 
