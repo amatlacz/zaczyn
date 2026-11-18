@@ -292,6 +292,39 @@ def check_single_tree(root):
     check_links(root)
 
 
+def library_skills():
+    return sorted(p.parent.name for p in (ROOT / 'library').glob('*/SKILL.md'))
+
+
+def library_payload(native, version):
+    """Optional standalone skills; read separately so core editions never depend on them."""
+    readme = (ROOT / 'library/README.md').read_bytes()
+    readme = readme.replace(b'../docs/verification.md', b'verification.md')
+    readme = readme.replace(b'../CONTRIBUTING.md', b'https://github.com/amatlacz/zaczyn/blob/main/CONTRIBUTING.md')
+    result = {'README.md': readme, 'verification.md': native['docs/verification.md'],
+              'VERSION': version.encode() + b'\n', 'LICENSE': native['LICENSE']}
+    for skill in library_skills():
+        for path in sorted((ROOT / 'library' / skill).rglob('*')):
+            if path.is_file():
+                result[skill + '/' + path.relative_to(ROOT / 'library' / skill).as_posix()] = path.read_bytes()
+    return result
+
+
+def check_library_tree(root):
+    entries = sorted(root.glob('*/SKILL.md'))
+    if not entries or set(root.rglob('SKILL.md')) != set(entries):
+        raise ValueError('Library skills must be top-level folders with one SKILL.md each')
+    for entry in entries:
+        text = entry.read_text(encoding='utf-8')
+        check_skill_file(text, entry.parent.name, str(entry))
+        if entry.parent.name.startswith('zaczyn-'):
+            raise ValueError('Library skills do not use the base prefix: ' + entry.parent.name)
+        local = [target for _, target in LINK.findall(text) if not urlsplit(target).scheme]
+        if local:
+            raise ValueError('Library skills must be self-contained: %s -> %s' % (entry, local[0]))
+    check_links(root)
+
+
 def host_payload(native, host, version=None):
     stamped = native['VERSION'] if version is None else version.encode() + b'\n'
     guide = native['adapters/' + host + '/README.md']
@@ -396,7 +429,7 @@ def build_stamp(version):
     try:
         commit = subprocess.run(['git', '-C', str(ROOT), 'rev-parse', '--short=12', 'HEAD'],
                                 capture_output=True, text=True, check=True).stdout.strip()
-        dirty = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all', '--', *BUNDLE_SOURCES],
+        dirty = subprocess.run(['git', '-C', str(ROOT), 'status', '--porcelain', '--untracked-files=all', '--', *BUNDLE_SOURCES, 'library'],
                                capture_output=True, text=True, check=True).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return version + '+unknown'
@@ -411,7 +444,8 @@ def build():
     chat=chat_payload(native,version,stamp)
     editions={'plugin':(native,'zaczyn-'+version+'.zip',check_tree),
               'chat':(chat,'zaczyn-chat-'+version+'.zip',check_links),
-              'single':(single_payload(native,stamp),'zaczyn-single-'+version+'.zip',check_single_tree)}
+              'single':(single_payload(native,stamp),'zaczyn-single-'+version+'.zip',check_single_tree),
+              'library':(library_payload(native,stamp),'zaczyn-library-'+version+'.zip',check_library_tree)}
     for host in HOSTS:
         editions[host]=(host_payload(native,host,stamp),'zaczyn-'+host+'-'+version+'.zip',check_host_tree)
     catalog={'version':version,'build':stamp,'skills':[],'artifacts':[]}
@@ -419,6 +453,10 @@ def build():
         header=native['core/skills/'+skill+'/SKILL.md'].decode().split('---',2)[1]
         catalog['skills'].append({'name':skill,'description':re.search(r'^description: (.*)$',header,re.M).group(1),
                                   'single_file':skill in SINGLE_SKILLS})
+    catalog['library']=[]
+    for skill in library_skills():
+        header=(ROOT/'library'/skill/'SKILL.md').read_text(encoding='utf-8').split('---',2)[1]
+        catalog['library'].append({'name':skill,'description':re.search(r'^description: (.*)$',header,re.M).group(1)})
     for edition,(payload,name,checker) in editions.items():
         write_zip(payload,ROOT/'dist'/name,checker)
         data=(ROOT/'dist'/name).read_bytes()

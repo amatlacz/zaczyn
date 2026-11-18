@@ -155,6 +155,27 @@ class Editions(unittest.TestCase):
         self.assertEqual([l for l in bundle.outside_fences(chat) if l.startswith('# ')], ['# Zaczyn — chat reference'])
         self.assertIn('# {{task name}}', chat)
 
+    def test_library_skills_are_standalone(self):
+        payload = bundle.library_payload(self.native, self.version)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, data in payload.items():
+                target = root/name
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(data)
+            bundle.check_library_tree(root)
+        self.assertTrue(bundle.library_skills())
+        for skill in bundle.library_skills():
+            text = payload[skill + '/SKILL.md'].decode()
+            self.assertLessEqual(len(text.split()), 600, skill)
+        self.assertFalse([name for name in self.native if name.startswith('library/')])
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'zaczyn-extra').mkdir()
+            (root/'zaczyn-extra/SKILL.md').write_text('---\nname: zaczyn-extra\ndescription: Demo. Use when asked.\n---\n', encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'base prefix'):
+                bundle.check_library_tree(root)
+
     def test_release_links_match_version(self):
         import re
         root = Path(bundle.ROOT)

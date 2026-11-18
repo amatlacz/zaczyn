@@ -75,7 +75,11 @@ In a chat project, the equivalent documents are uploaded sources. Prepared text 
 
 A rich assistant can have many skills and a long profile. Zaczyn keeps a concise index and consults relevant material when needed. It distinguishes suggestions, configured capabilities, and actual successful trials; a tool is never called installed merely because it was recommended.
 
-[See a guided setup example](examples/guided-setup/README.md), [a small work record](examples/attendance-summary/README.md), or [learn what deserves a skill](docs/field-guide/what-is-a-skill.md).
+[See a guided setup example](examples/guided-setup/README.md), [a small work record](examples/attendance-summary/README.md), or [learn what deserves a skill](docs/field-guide/what-is-a-skill.md). Field guide: [your first own skill](docs/field-guide/first-own-skill.md), [keep the context clean](docs/field-guide/context-hygiene.md), [check what your app actually loads](docs/field-guide/check-your-app.md).
+
+## Optional library
+
+[library/](library/README.md) holds optional single-file skills for specific work, independent of the base: notes-to-brief (a sourced brief from scattered notes), test-charter, and release-readiness-note. Install only the ones you need.
 
 ## For contributors
 

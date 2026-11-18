@@ -10,7 +10,7 @@ Help people complete useful work and develop a process they can understand and m
 - Host adapters with actual installation, resource-access, and context-loading evidence.
 - Short examples showing when to keep a prompt, add a rule or template, or retire process.
 
-Formal packs, automatic tool catalogs, and a user-facing CLI are deferred. Prefer proving a local practice first.
+Optional skills live in `library/`, one self-contained `SKILL.md` each, without the `zaczyn-` prefix and without links to the base. Propose one only with a real example of the work it helps with. Automatic tool catalogs and a user-facing CLI are deferred. Prefer proving a local practice first.
 
 ## Ground rules
 
@@ -26,13 +26,14 @@ From the source checkout, with Python 3.9 or newer:
 python3 scripts/build_bundle.py
 ```
 
-The builder creates seven reproducible editions, a `.zip.sha256` sidecar for each, and `dist/catalog.json` listing the skills and archives:
+The builder creates eight reproducible editions, a `.zip.sha256` sidecar for each, and `dist/catalog.json` listing the skills and archives:
 
 - `dist/zaczyn-<VERSION>.zip`: native plugin and starter-folder fallback, with the hidden `.claude-plugin/` manifest, portable core, host guides, and examples.
 - `dist/zaczyn-claude-project-<VERSION>.zip`: five self-contained project skills for Claude Code desktop/local sessions, with project-only installation instructions.
 - `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, and `dist/zaczyn-kiro-<VERSION>.zip`: a host guide and five self-contained skill folders for workspace installation/import.
 - `dist/zaczyn-chat-<VERSION>.zip`: complete `ZACZYN.md` reference compiled from that core, short project instructions, and chat-specific start/verification guidance.
 - `dist/zaczyn-single-<VERSION>.zip`: setup, work, review, and grow as one self-contained Markdown skill file each, for apps that accept a single uploaded, attached, or pasted file.
+- `dist/zaczyn-library-<VERSION>.zip`: the optional standalone skills from `library/`, read separately so the core editions never change because of them.
 
 The GitHub workflow runs the offline checks, builds all editions, and verifies their checksums on pushes and pull requests. It does not call an AI model, install host software, or publish a release. Generated archives stay out of Git; attach the versioned ZIPs and checksum sidecars if you choose to publish a GitHub release.
 
