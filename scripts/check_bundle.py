@@ -78,6 +78,13 @@ class Editions(unittest.TestCase):
         editions = [(self.native, bundle.check_tree),
                     (bundle.chat_payload(self.native, self.version), bundle.check_links)]
         editions += [(bundle.host_payload(self.native, host), bundle.check_host_tree) for host in bundle.HOSTS]
+        stamp = self.version + '+gdeadbeef0000'
+        editions += [(bundle.host_payload(self.native, host, stamp), bundle.check_host_tree) for host in bundle.HOSTS]
+        editions += [(bundle.single_payload(self.native, stamp), bundle.check_single_tree),
+                     (bundle.chat_payload(self.native, self.version, stamp), bundle.check_links)]
+        stamped = bundle.host_payload(self.native, 'codex', stamp)
+        self.assertTrue(all(data == (stamp + '\n').encode() for name, data in stamped.items() if name.endswith('VERSION')))
+        self.assertEqual(bundle.build_stamp(self.version), bundle.build_stamp(self.version))
         for payload, checker in editions:
             with tempfile.TemporaryDirectory() as directory:
                 first, second = Path(directory)/'one.zip', Path(directory)/'two.zip'
@@ -86,6 +93,77 @@ class Editions(unittest.TestCase):
                 self.assertEqual(first.read_bytes(), second.read_bytes())
                 expected = hashlib.sha256(first.read_bytes()).hexdigest()
                 self.assertEqual(first.with_suffix('.zip.sha256').read_text(encoding='utf-8'), expected+'  one.zip\n')
+
+    def test_skill_frontmatter_rules_reject_bad_skills(self):
+        good = '---\nname: demo-skill\ndescription: Does one thing. Use when asked.\n---\n\n# Demo\n'
+        bundle.check_skill_file(good, 'demo-skill', 'good')
+        bundle.check_skill_file(good.replace('---\n\n', 'license: MIT\nmetadata:\n  version: "1"\n---\n\n'), 'demo-skill', 'good with optional fields')
+        name, keys, desc = 'name must', 'Frontmatter keys', 'description'
+        bad = {
+            'name differs from folder': (good.replace('name: demo-skill', 'name: other-skill'), name),
+            'uppercase name': (good.replace('name: demo-skill', 'name: Demo-Skill'), name),
+            'leading hyphen': (good.replace('name: demo-skill', 'name: -demo-skill'), name),
+            'double hyphen': (good.replace('name: demo-skill', 'name: demo--skill'), name),
+            'missing name': (good.replace('name: demo-skill\n', ''), name),
+            'unknown key': (good.replace('---\n\n', 'version: 1\n---\n\n'), keys),
+            'duplicate key': (good.replace('---\n\n', 'name: demo-skill\n---\n\n'), keys),
+            'long description': (good.replace('Does one thing. Use when asked.', 'x' * 1025), desc),
+            'empty description': (good.replace('Does one thing. Use when asked.', ''), desc),
+            'colon in description': (good.replace('Use when asked.', 'Use when: asked.'), desc),
+            'trailing colon': (good.replace('Use when asked.', 'Use when:'), desc),
+            'tab before hash': (good.replace('Use when asked.', 'Use when asked.\t#c'), desc),
+            'long compatibility': (good.replace('---\n\n', 'compatibility: ' + 'x' * 501 + '\n---\n\n'), 'compatibility'),
+            'scalar metadata': (good.replace('---\n\n', 'metadata: foo\n---\n\n'), 'metadata'),
+            'long body': (good + 'line\n' * 501, '500 lines'),
+        }
+        for label, (text, message) in bad.items():
+            with self.assertRaisesRegex(ValueError, message, msg=label):
+                bundle.check_skill_file(text, 'demo-skill', label)
+
+    def test_exports_are_flat_and_ship_only_needed_guides(self):
+        for skill in bundle.PUBLIC_SKILLS:
+            payload = bundle.skill_payload(self.native, skill)
+            self.assertTrue(all(name.count('/') <= 1 for name in payload), skill)
+            self.assertEqual('references/orchestration.md' in payload, skill == 'zaczyn-orchestrate', skill)
+
+    def test_single_files_are_self_contained(self):
+        payload = bundle.single_payload(self.native, self.version)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for name, data in payload.items():
+                (root/name).write_bytes(data)
+            bundle.check_single_tree(root)
+        for skill in bundle.SINGLE_SKILLS:
+            text = payload[skill + '.md'].decode()
+            for _, target in bundle.LINK.findall(text):
+                self.assertTrue(target.startswith(('#', 'http://', 'https://')), (skill, target))
+            self.assertEqual([l for l in bundle.outside_fences(text) if l.startswith('# ')], ['# ' + skill.split('-')[1].title()], skill)
+        task = payload['zaczyn-work.md'].decode()
+        self.assertIn('````markdown\n---\nstatus: open\n---\n\n# {{task name}}', task)
+        original = bundle.SINGLE_LIMIT
+        try:
+            bundle.SINGLE_LIMIT = 1000
+            with self.assertRaisesRegex(ValueError, 'limit'):
+                bundle.single_payload(self.native, self.version)
+        finally:
+            bundle.SINGLE_LIMIT = original
+
+    def test_exported_templates_are_verbatim(self):
+        payload = bundle.skill_payload(self.native, 'zaczyn-work')
+        self.assertEqual(payload['references/task-template.md'], self.native['core/assets/task.md'])
+        chat = bundle.chat_payload(self.native, self.version)['ZACZYN.md'].decode()
+        self.assertEqual([l for l in bundle.outside_fences(chat) if l.startswith('# ')], ['# Zaczyn — chat reference'])
+        self.assertIn('# {{task name}}', chat)
+
+    def test_release_links_match_version(self):
+        import re
+        root = Path(bundle.ROOT)
+        documents = [root/'README.md', root/'START.md', root/'CONTRIBUTING.md', *sorted((root/'adapters').rglob('*.md'))]
+        version = r'(\d+\.\d+\.\d+(?:-[a-z0-9.-]+)?)'
+        pattern = re.compile(r'zaczyn-[a-z-]*?' + version + r'\.zip|releases/(?:tag|download)/v' + version)
+        for document in documents:
+            for match in pattern.finditer(document.read_text(encoding='utf-8')):
+                self.assertEqual(match.group(1) or match.group(2), self.version, document)
 
     def test_host_probe_files_match_their_source(self):
         import re

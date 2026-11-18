@@ -26,16 +26,17 @@ From the source checkout, with Python 3.9 or newer:
 python3 scripts/build_bundle.py
 ```
 
-The builder creates six reproducible editions and a `.zip.sha256` sidecar for each:
+The builder creates seven reproducible editions, a `.zip.sha256` sidecar for each, and `dist/catalog.json` listing the skills and archives:
 
 - `dist/zaczyn-<VERSION>.zip`: native plugin and starter-folder fallback, with the hidden `.claude-plugin/` manifest, portable core, host guides, and examples.
 - `dist/zaczyn-claude-project-<VERSION>.zip`: five self-contained project skills for Claude Code desktop/local sessions, with project-only installation instructions.
 - `dist/zaczyn-codex-<VERSION>.zip`, `dist/zaczyn-antigravity-<VERSION>.zip`, and `dist/zaczyn-kiro-<VERSION>.zip`: a host guide and five self-contained skill folders for workspace installation/import.
 - `dist/zaczyn-chat-<VERSION>.zip`: complete `ZACZYN.md` reference compiled from that core, short project instructions, and chat-specific start/verification guidance.
+- `dist/zaczyn-single-<VERSION>.zip`: setup, work, review, and grow as one self-contained Markdown skill file each, for apps that accept a single uploaded, attached, or pasted file.
 
 The GitHub workflow runs the offline checks, builds all editions, and verifies their checksums on pushes and pull requests. It does not call an AI model, install host software, or publish a release. Generated archives stay out of Git; attach the versioned ZIPs and checksum sidecars if you choose to publish a GitHub release.
 
-Edit `core/` and the relevant source under `adapters/`, then rebuild; do not maintain independent exported copies. The native exporter follows resource links, remaps the adapter index to `adapters/native/runtime.md`, and keeps the dependency closure inside each skill. Supporting entries become procedure.md; the AGENTS template is renamed so nested discovery cannot load it as real workspace instructions. Keep host-specific saving behavior in the chat runtime. The compiler converts resource links to internal anchors and rejects missing references. All archives exclude lab material, local settings, test outputs, and contributor tooling. The builder checks the declared public skill entries, native metadata, resource links, extracted bytes, and compiled anchors outside the checkout.
+Edit `core/` and the relevant source under `adapters/`, then rebuild; do not maintain independent exported copies. The native exporter follows resource links, remaps the adapter index to `adapters/native/runtime.md`, and keeps the dependency closure inside each skill, flattened to `SKILL.md` plus `references/<name>.md`. Another skill that is applied (for example Work applying Review) becomes `references/<skill>.md`; a skill that is only mentioned is named in plain text and not copied. Templates become `references/<name>-template.md` so nested discovery cannot load them as real workspace instructions. The single-file edition compiles setup, work, review, and grow into one Markdown file each, with `adapters/single-file/runtime.md` and in-file anchors. Keep host-specific saving behavior in the runtimes. The compilers convert resource links to internal anchors and reject missing references. The builder enforces Agent Skills frontmatter rules (name, description length and safe YAML, known keys, body length), stamps the VERSION files of every edition except the plugin (whose manifest carries the plain version) with the source commit, and writes `dist/catalog.json`. Because of the stamp, release checksums are reproducible only from the tagged commit. All archives exclude lab material, local settings, test outputs, and contributor tooling. The builder checks the declared public skill entries, native metadata, resource links, extracted bytes, and compiled anchors outside the checkout.
 
 Run the focused offline packaging checks after changing the builder:
 
