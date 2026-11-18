@@ -1,5 +1,18 @@
 # Updating Zaczyn
 
+## Version 0.7.0
+
+The five skills keep their names and purpose; their wording, the shared conventions, and the package layout changed.
+
+1. **Remove older copies first.** Look in every folder your app reads (the table in the [adapter index](../adapters/README.md) lists them, including personal folders such as `~/.agents/skills` and `~/.claude/skills`) and move the old `zaczyn-*` folders out. Two versions side by side make an app pick one unpredictably or list a skill twice.
+2. **Install all five folders from the 0.7.0 package for your app.** Each skill folder is now flat: `SKILL.md` plus `references/<name>.md`. Do not mix files from 0.6.0 and 0.7.0 inside one folder. Each skill's `VERSION` file names its build, for example `0.7.0+g<commit>`.
+3. **Keep your own files.** AGENTS.md, PROJECT.md, task records, and local recipes are unchanged by the update. New setups add a labelled reply-length default to AGENTS.md; existing ones are not rewritten. Add the line yourself if you want it: “Keep replies short: lead with the answer or result, then say what was checked and what was not. Expand only when asked.”
+4. **Check what loaded.** In a new conversation, use the [three-question check](field-guide/check-your-app.md).
+
+Behaviour you may notice: Review labels results it did not open itself as reported; Work and the other skills show a draft or list before changing a connected system such as mail, a tracker, or a shared document, unless you already approved those items or saved a standing permission in AGENTS.md; quick setup no longer shows the depth menu when you ask for a quick setup.
+
+New in this release: the single-file edition (`zaczyn-single-0.7.0.zip`) for apps that read one file, draft guides and a package for GitHub Copilot in VS Code and for Microsoft Copilot, and the optional library (`zaczyn-library-0.7.0.zip`). To roll back, remove the five 0.7.0 folders and restore your 0.6.0 backup; do not load both.
+
 ## Cost-aware orchestration in 0.6.0
 
 Version 0.6.0 adds `zaczyn-orchestrate` to all six editions. Update the complete five Zaczyn skill folders from the matching workspace package, or select the new complete plugin/chat reference. Back up existing Zaczyn folders outside discovery paths first; preserve unrelated skills, local customizations, AGENTS/PROJECT, and outputs. To roll back to 0.5.2, remove the added `zaczyn-orchestrate` folder and restore the previous four folders, or select the prior plugin/reference. Do not load two versions together.

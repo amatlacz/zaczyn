@@ -10,16 +10,16 @@ You do not need to know which skills or libraries to install. You explain your w
 
 ## Download, install, and start
 
-You need your AI app installed and working. Download the **0.6.0 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages (the only exception is the optional [host probe](probe/README.md), which says when to use it).
+You need your AI app installed and working. Download the **0.7.0 package for that app** below; you do not need Git or Python to use it. GitHub's “Code → Download ZIP” contains the source repository, not these ready-to-install packages (the only exception is the optional [host probe](probe/README.md), which says when to use it).
 
 | App | Download | Installation guide | How well tested |
 |---|---|---|---|
-| Claude Code (one project, desktop or terminal) | [Claude project ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-claude-project-0.6.0.zip) | [Project-only guide](adapters/claude-project/README.md) | Package checks; earlier plugin/setup evidence; desktop install unverified |
-| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-codex-0.6.0.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
-| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-antigravity-0.6.0.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
-| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.6.0/zaczyn-kiro-0.6.0.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
-| GitHub Copilot in VS Code | With the next release | [VS Code guide](adapters/vscode-copilot/README.md) | Draft; not yet confirmed |
-| Microsoft Copilot (Cowork, Chat) and other browser assistants | With the next release (single-file edition) | [Microsoft 365 guide](adapters/microsoft-365/README.md), [single-file guide](adapters/single-file/README.md) | Draft; not yet confirmed |
+| Claude Code (one project, desktop or terminal) | [Claude project ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-claude-project-0.7.0.zip) | [Project-only guide](adapters/claude-project/README.md) | Package checks; earlier plugin/setup evidence; desktop install unverified |
+| Codex | [Codex ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-codex-0.7.0.zip) | [Codex guide](adapters/codex/README.md) | Discovery, setup artifacts, and context checks |
+| Antigravity | [Antigravity ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-antigravity-0.7.0.zip) | [Antigravity guide](adapters/antigravity/README.md) | Experimental; runtime unverified |
+| Kiro | [Kiro ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-kiro-0.7.0.zip) | [Kiro guide](adapters/kiro/README.md) | Experimental; runtime unverified |
+| GitHub Copilot in VS Code | [VS Code ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-vscode-copilot-0.7.0.zip) | [VS Code guide](adapters/vscode-copilot/README.md) | Draft; not yet confirmed |
+| Microsoft Copilot (Cowork, Chat) and other browser assistants | [Single-file ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-single-0.7.0.zip) | [Microsoft 365 guide](adapters/microsoft-365/README.md), [single-file guide](adapters/single-file/README.md) | Draft; not yet confirmed |
 
 1. **Download and extract.** Keep all files together. For an existing project folder named `XYZ`, rename the extracted folder `zaczyn-install` and copy it into `XYZ`. You should now have `XYZ/zaczyn-install/README.md` and `XYZ/zaczyn-install/skills/`.
 2. **Install for that project.** Open `XYZ` itself in your AI app as a local project and send: “Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start setup yet.” For Claude Code, this copies five complete skill folders to `XYZ/.claude/skills/`; Codex uses `XYZ/.agents/skills/`. The package's README provides the exact host-specific rules.
@@ -35,7 +35,7 @@ For more questions and suggestions, ask for a guided or deep setup instead.
 
 Your work stays in your own folder. Zaczyn saves `AGENTS.md` for working preferences and `PROJECT.md` for project facts; Claude Code also gets a `CLAUDE.md` pointer. Additional tools, templates, and procedures are added only when selected. Later, use work to plan or execute, review to assess a result, and grow to adjust your setup.
 
-[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.6.0) includes checksum files and the optional chat edition. Fresh-install execution of the new orchestration skill in supported hosts remains unverified. Read the [host capability guide](adapters/orchestration.md) and [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
+[START.md](START.md) provides more detail. The [release page](https://github.com/amatlacz/zaczyn/releases/tag/v0.7.0) includes checksum files and the optional chat edition. Fresh-install execution of the new orchestration skill in supported hosts remains unverified. Read the [host capability guide](adapters/orchestration.md) and [verification scope](docs/verification.md) for the exact tested versions and limitations. A source checkout is also usable through the Claude plugin path; contributors can build every package locally.
 
 ## Choose your depth
 
@@ -81,7 +81,7 @@ A rich assistant can have many skills and a long profile. Zaczyn keeps a concise
 
 ## Optional library
 
-[library/](library/README.md) holds optional single-file skills for specific work, independent of the base: notes-to-brief (a sourced brief from scattered notes), test-charter, and release-readiness-note. Install only the ones you need.
+[library/](library/README.md) holds optional single-file skills for specific work, independent of the base: notes-to-brief (a sourced brief from scattered notes), test-charter, and release-readiness-note. Install only the ones you need; they are also in [one ZIP](https://github.com/amatlacz/zaczyn/releases/download/v0.7.0/zaczyn-library-0.7.0.zip).
 
 ## For contributors
 

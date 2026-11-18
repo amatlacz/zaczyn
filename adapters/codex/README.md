@@ -1,6 +1,6 @@
 # Zaczyn in Codex
 
-Use `zaczyn-codex-0.6.0.zip`. This is a native workspace skill package. No browser upload or user-facing command-line installer is required.
+Use `zaczyn-codex-0.7.0.zip`. This is a native workspace skill package. No browser upload or user-facing command-line installer is required.
 
 ## Put it in your work project
 

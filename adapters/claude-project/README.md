@@ -1,6 +1,6 @@
 # Install Zaczyn in one Claude Code project
 
-Use `zaczyn-claude-project-0.6.0.zip`. This package installs five skills in one project's `.claude/skills/` folder. It works through Claude Code's project-skill mechanism, including local sessions in the desktop app's Code tab. No terminal command or account-wide plugin installation is needed. This guide is for Claude Code, not a normal Chat or Cowork conversation.
+Use `zaczyn-claude-project-0.7.0.zip`. This package installs five skills in one project's `.claude/skills/` folder. It works through Claude Code's project-skill mechanism, including local sessions in the desktop app's Code tab. No terminal command or account-wide plugin installation is needed. This guide is for Claude Code, not a normal Chat or Cowork conversation.
 
 ## Example: your existing folder is XYZ
 
