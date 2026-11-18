@@ -30,6 +30,10 @@ Ask for the skill by name. Workspace skills live in .kiro/skills; the IDE's Agen
 
 Official mechanisms: [skills](https://kiro.dev/docs/skills/), [steering](https://kiro.dev/docs/steering/).
 
+## If the running app is not listed here
+
+If this session runs in another app (for example GitHub Copilot, Microsoft Copilot, Cursor, or a browser chat), do not borrow the folders, commands, or wrappers of the apps above. Use AGENTS.md and PROJECT.md in the work folder if this app can read them. Say whether this skill was loaded by the app or read because the user asked. If loading is uncertain, give the user a prompt that names the file to read, for example: “Read the zaczyn-work skill's SKILL.md in full and the files it points to, then apply it to my task.”
+
 ## Orchestration
 
 Use `zaczyn-orchestrate` only when named or explicitly requested for cost-aware orchestration. Inspect the running host for available delegation, models, efforts, and permissions; same-model subagents are not assumed to save cost. Claude Code subagents can use supported per-agent model/effort settings, subject to effective configuration. Codex supports explicit spawn settings, defaults, and custom agent files when its subagent tools are enabled. Kiro has subagents and optional workflows, with model controls depending on client and agent configuration. Antigravity delegation is unverified here. The main agent owns routing, integration, and the result. See the [host capability guide](../orchestration.md) for current official references.

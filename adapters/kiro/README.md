@@ -20,7 +20,7 @@ If you prefer manual copying, copy those five folders to that same destination u
 
 Open a fresh conversation in that workspace after installation; restart the app if discovery does not refresh. Ask Kiro to use zaczyn-setup. In the IDE, Agent Steering & Skills also offers Import a skill → Local folder; select each complete exported skill folder.
 
-Say: “Help me customize this workspace for my work. Show me quick, guided, and deep options before we start a task.” Choose a depth, discuss your needs, and accept only additions you want. Setup should save your preferences and facts in the work project.
+Say: “Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.” For more questions and suggestions, ask for a guided or deep setup instead. Accept only additions you want. Setup should save your preferences and facts in the work project.
 
 Kiro documents automatic AGENTS.md loading. Keep it at the workspace root and point to PROJECT.md. No extra steering wrapper is required for the default agent. Custom agents have their own resource configuration; check it instead of assuming the default paths are enabled.
 

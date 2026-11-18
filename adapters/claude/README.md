@@ -34,7 +34,7 @@ After repairing a package, exit and relaunch with the flag. A response that find
 1. Open **Customize → Plugins** in Claude.
 2. Choose the upload option and select the native ZIP. Upload the whole ZIP; do not manually select its visible contents.
 3. Inspect the installed plugin and its five skills. Select your actual work folder, not a source checkout or extracted bundle.
-4. Invoke setup from the available skills and describe the project, recurring work, or personal assistant you want to customize. Choose quick, guided, or deep.
+4. Invoke setup from the available skills and describe the project, recurring work, or personal assistant you want to customize. Ask for a quick setup, or for a guided or deep one if you want more questions and suggestions.
 5. Confirm the assistant can read its shared resources and save your AGENTS/PROJECT context in the chosen folder. If a resource is unavailable, stop and diagnose the selected package instead of silently using another checkout.
 
 Plugin upload is documented in [Cowork's guide](https://claude.com/docs/cowork/guide/plugins). A documented flow is not proof this version has passed it; see [verification scope](../../docs/verification.md). A normal Claude Chat conversation is not the same as Cowork; use an explicit reference/upload workflow if native plugins are unavailable there.

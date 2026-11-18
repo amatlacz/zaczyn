@@ -20,7 +20,7 @@ If you prefer manual copying, copy those five folders to that same destination u
 
 Open a fresh conversation in that workspace after installation; restart the app if discovery does not refresh. Ask Antigravity to use zaczyn-setup by name in a new conversation. The package uses the current .agents/skills path.
 
-Say: “Help me customize this workspace for my work. Show me quick, guided, and deep options before we start a task.” Choose a depth, discuss your needs, and accept only additions you want. Setup should save your preferences and facts in the work project.
+Say: “Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.” For more questions and suggestions, ask for a guided or deep setup instead. Accept only additions you want. Setup should save your preferences and facts in the work project.
 
 Use AGENTS.md for portable working instructions and PROJECT.md for facts. In the editor, open Customizations → Rules and create or reuse a workspace rule set to Always On with the text: “Read AGENTS.md in the workspace root before work; follow its PROJECT.md pointer.” Keep the rule a pointer rather than a second copy of preferences. Verify its activation mode in the UI; writing a Markdown file alone does not prove Always On is configured. If the host already demonstrably loads AGENTS.md, reuse that mechanism.
 

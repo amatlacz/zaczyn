@@ -7,7 +7,7 @@ Use the **chat edition** (`zaczyn-chat-0.6.0.zip`). It contains a reference gene
 1. Extract the chat ZIP. Open ChatGPT and create a project for the work you want to customize.
 2. Add `ZACZYN.md` from the extracted folder to the project's sources.
 3. Open the project's settings/instructions and paste the contents of `PROJECT-INSTRUCTIONS.txt`. Keep your existing instructions if using an existing project; resolve conflicts rather than replace them blindly.
-4. Start a chat inside that project and say: “Help me set this up for my work. Show me quick, guided, and deep options before we start a task.” Or specify the depth and purpose directly.
+4. Start a chat inside that project and say: “Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.” For more questions and suggestions, ask for a guided or deep setup instead.
 5. Setup will prepare `AGENTS.md` and `PROJECT.md` as downloadable files or complete text. Save them as project sources. They contain your working preferences and facts; the shipped ZACZYN reference stays separate.
 
 These project/file/instruction mechanisms are documented in [ChatGPT projects](https://learn.chatgpt.com/docs/projects). Interface labels and available tools can vary. A normal ChatGPT project and a local-folder project are different environments. Only claim direct file editing or installation when it is available in the selected environment.

@@ -17,7 +17,7 @@ For an existing folder `XYZ`, download `zaczyn-claude-project-0.6.0.zip`. Extrac
 
 > Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start project setup yet.
 
-Claude copies the five complete skills into `XYZ/.claude/skills/`. After installation, start a fresh local conversation in XYZ and select `/zaczyn-setup` in the message box. Describe your work and choose a setup depth. The [project-only guide](adapters/claude-project/README.md) has the folder layout, exact copying rules, and update/undo instructions.
+Claude copies the five complete skills into `XYZ/.claude/skills/`. After installation, start a fresh local conversation in XYZ and select `/zaczyn-setup` in the message box. Send the quick-setup prompt below, or ask for a guided or deep setup. The [project-only guide](adapters/claude-project/README.md) has the folder layout, exact copying rules, and update/undo instructions.
 
 Your project context and outputs belong in XYZ. Other unrelated projects are unaffected. This uses Claude Code's local Code sessions; a normal Chat or Cowork conversation is a different environment.
 
@@ -33,9 +33,9 @@ These are workspace skill packages distributed as GitHub release downloads; they
 
 ## Your first conversation
 
-> Help me customize this for [my project, recurring work, or personal assistant]. I want to see useful possibilities before starting a task.
+> Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.
 
-Choose **quick**, **guided**, or **deep** when offered, or name the depth in that first message. Quick aims for a short exchange; guided explores your working needs; deep can continue over several sessions. You can skip questions, stop, or change depth.
+Quick aims for a short exchange. For more questions and suggestions, ask for a **guided** setup, which explores your working needs, or a **deep** one, which can continue over several sessions. Without a named depth, setup asks you to choose. You can skip questions, stop, or change depth.
 
 The assistant should reuse what you already told it, suggest concrete options, let you choose, and save the setup. An example task describes your needs; it is not automatically executed. At the end, choose to begin work or customize further. Ask “Save our setup progress” whenever you want to stop.
 

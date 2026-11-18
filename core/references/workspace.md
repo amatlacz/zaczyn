@@ -1,6 +1,18 @@
 # Workspace conventions
 
-Read these before a skill writes project state. Reuse the current session's reading unless the file changed.
+Read the first two sections on every use. Read the rest before creating or changing files in the workspace. Reuse the current session's reading unless the file changed.
+
+## Always
+
+Use the user's conversation language and honor a separately requested output language. Keep filenames, state keys, and criterion IDs stable. Ordinary work asks only for missing decisions that affect the next action; setup explicitly supports broader discovery at the selected depth.
+
+Respect setup-only, plan-only, and review-only scope. An example supplied during onboarding does not by itself authorize execution. Continue when the user explicitly chooses work or already requested setup followed by execution.
+
+Drafting is not sending, publishing, or changing a connected system (tracker, wiki, board, mail, calendar, shared document). Such a change needs the user's approval of the specific items: show the list or draft first. An explicit request that names the items, or a standing authorization the user saved in AGENTS or gave for this task, is approval for the items it covers; do not ask again, and show a list first only for items outside it. Approval covers exactly the listed items; do not add items, and do not repeat a failed write without checking what was already written. Report what was written and where.
+
+If a file a skill tells you to read cannot be opened, say which one and do not claim its guidance was applied.
+
+Capability status uses one ladder: proposed (suggested), selected (the user chose it), available (the app lists it), configured (set up in the agreed scope), verified (a trial worked, with the tested case named), or blocked (with the reason). A name in a recommendation, a file copied into a folder, or a skill in a list is not a later rung.
 
 ## Resolve the environment
 
@@ -39,9 +51,3 @@ On an archive request, prefer marking a closed item inactive in the existing ind
 Recognize both task.md and legacy brief/plan/review. The legacy brief owns intent/status, its plan owns progress when present, and its review owns evidence. Continue without conversion. If formats conflict for one task, use explicit authority pointers or resolve the choice with the user rather than choosing by filename or timestamp.
 
 Reuse authoritative domain plans and checkpoints. Add a Zaczyn record only for missing cross-workflow context, linking existing records. For nested tracks/instances, identify the selected root, affected outputs, and owner/update convention for shared material. Resolve ambiguous scope before changing adjacent instances.
-
-## Communication and authority
-
-Use the user's conversation language and honor a separately requested output language. Keep filenames, state keys, and criterion IDs stable. Ordinary work asks only for missing decisions that affect the next action; setup explicitly supports broader discovery at the selected depth.
-
-Respect setup-only, plan-only, and review-only scope. An example supplied during onboarding does not by itself authorize execution. Continue when the user explicitly chooses work or already requested setup followed by execution. Distinguish drafting from sending/publishing or modifying connected systems; retain the user's existing authorization without repeated ceremonies.

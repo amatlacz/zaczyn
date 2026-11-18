@@ -21,13 +21,15 @@ You need your AI app installed and working. Download the **0.6.0 package for tha
 
 1. **Download and extract.** Keep all files together. For an existing project folder named `XYZ`, rename the extracted folder `zaczyn-install` and copy it into `XYZ`. You should now have `XYZ/zaczyn-install/README.md` and `XYZ/zaczyn-install/skills/`.
 2. **Install for that project.** Open `XYZ` itself in your AI app as a local project and send: “Read zaczyn-install/README.md and install Zaczyn for this project only. Preserve my existing files and settings. Do not install globally or start setup yet.” For Claude Code, this copies five complete skill folders to `XYZ/.claude/skills/`; Codex uses `XYZ/.agents/skills/`. The package's README provides the exact host-specific rules.
-3. **Start setup.** Start a fresh local conversation in `XYZ`. In Claude Code, type `/zaczyn-setup` in the message box and select it. In Codex, use `$zaczyn-setup`. These are messages in your app, not terminal commands. Add the setup prompt below and choose quick, guided, or deep.
+3. **Start setup.** Start a fresh local conversation in `XYZ`. In Claude Code, type `/zaczyn-setup` in the message box and select it. In Codex, use `$zaczyn-setup`. These are messages in your app, not terminal commands. Add the setup prompt below.
 
 This installation is scoped to `XYZ` and its relevant subdirectories. It does not install Zaczyn for your account or unrelated projects. Once the five complete skill folders are installed, `zaczyn-install` is no longer needed by the skills and can be moved out of your project. For terminal users who prefer plugins, the [Claude guide](adapters/claude/README.md) retains the alternative `--plugin-dir` path.
 
 First setup prompt:
 
-> Help me customize this workspace for my work. Show me quick, guided, and deep setup options. Ask about my needs and suggest useful improvements before starting a task.
+> Quick setup: I want help with <one sentence about your work>. Ask only what you still need, then save my setup.
+
+For more questions and suggestions, ask for a guided or deep setup instead.
 
 Your work stays in your own folder. Zaczyn saves `AGENTS.md` for working preferences and `PROJECT.md` for project facts; Claude Code also gets a `CLAUDE.md` pointer. Additional tools, templates, and procedures are added only when selected. Later, use work to plan or execute, review to assess a result, and grow to adjust your setup.
 
